@@ -1,32 +1,27 @@
 <!DOCTYPE html>
 <html>
-<head><meta charset="utf-8"><title>ChangeX Auth Test</title></head>
+<head><meta charset="utf-8"><title>Register Test</title></head>
 <body>
   <h2>Register</h2>
   <input id="reg-first" placeholder="First Name"><br>
   <input id="reg-last" placeholder="Last Name"><br>
   <input id="reg-email" type="email" placeholder="Email"><br>
+  <input id="reg-phone" placeholder="Phone"><br>
   <input id="reg-pw" type="password" placeholder="Password"><br>
+  <input id="reg-ref" placeholder="Referral Code (optional)"><br>
   <button onclick="register()">Register</button>
-  <pre id="reg-out"></pre>
-
-  <hr>
-
-  <h2>Login</h2>
-  <input id="login-email" type="email" placeholder="Email"><br>
-  <input id="login-pw" type="password" placeholder="Password"><br>
-  <button onclick="login()">Login</button>
-  <pre id="login-out"></pre>
-
+  <pre id="out"></pre>
   <script>
     const BASE = 'https://changex-backend-etfk.onrender.com/api/v1';
-
     async function register() {
       const body = {
         firstName: document.getElementById('reg-first').value,
         lastName: document.getElementById('reg-last').value,
         email: document.getElementById('reg-email').value,
-        password: document.getElementById('reg-pw').value
+        phone: document.getElementById('reg-phone').value,
+        password: document.getElementById('reg-pw').value,
+        referralCode: document.getElementById('reg-ref').value || undefined,
+        acceptTerms: true
       };
       try {
         const res = await fetch(BASE+'/auth/register', {
@@ -35,27 +30,9 @@
           body: JSON.stringify(body)
         });
         const data = await res.json();
-        document.getElementById('reg-out').textContent = JSON.stringify(data, null, 2);
+        document.getElementById('out').textContent = JSON.stringify(data, null, 2);
       } catch(e) {
-        document.getElementById('reg-out').textContent = 'Error: ' + e.message;
-      }
-    }
-
-    async function login() {
-      const body = {
-        email: document.getElementById('login-email').value,
-        password: document.getElementById('login-pw').value
-      };
-      try {
-        const res = await fetch(BASE+'/auth/login', {
-          method: 'POST',
-          headers: {'Content-Type':'application/json'},
-          body: JSON.stringify(body)
-        });
-        const data = await res.json();
-        document.getElementById('login-out').textContent = JSON.stringify(data, null, 2);
-      } catch(e) {
-        document.getElementById('login-out').textContent = 'Error: ' + e.message;
+        document.getElementById('out').textContent = 'Error: '+e.message;
       }
     }
   </script>
