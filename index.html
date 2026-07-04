@@ -5107,150 +5107,70 @@
             display: inline-flex !important;
         }
 
-        /* ===== ONLINE STATUS INDICATOR ===== */
+        /* ===== NEW: Premium Book Badge ===== */
+        .badge-premium-book {
+            background: linear-gradient(135deg, rgba(212, 175, 55, .2), rgba(251, 146, 60, .12));
+            color: var(--gold);
+            border: 1px solid rgba(212, 175, 55, .35);
+            font-weight: 700;
+        }
+        .badge-premium-book i {
+            margin-right: .2rem;
+        }
+        .badge-approval-pending {
+            background: rgba(251, 191, 36, .12);
+            color: var(--orange);
+            border: 1px solid rgba(251, 191, 36, .25);
+        }
+        .badge-approval-approved {
+            background: rgba(52, 211, 153, .12);
+            color: var(--success);
+            border: 1px solid rgba(52, 211, 153, .25);
+        }
+        .badge-approval-rejected {
+            background: rgba(248, 113, 113, .12);
+            color: var(--danger);
+            border: 1px solid rgba(248, 113, 113, .25);
+        }
+
+        /* ===== NEW: Online Status Dot ===== */
         .online-dot {
             display: inline-block;
             width: 8px;
             height: 8px;
             border-radius: 50%;
             background: var(--success);
-            margin-right: 4px;
-            animation: pulse-online 1.8s ease-in-out infinite;
+            margin-left: .3rem;
             flex-shrink: 0;
+            animation: pulse-dot 1.5s ease-in-out infinite;
         }
         .online-dot.offline {
             background: var(--text3);
             animation: none;
         }
-        @keyframes pulse-online {
+        @keyframes pulse-dot {
             0%,
             100% {
                 opacity: 1;
                 transform: scale(1);
             }
             50% {
-                opacity: 0.6;
-                transform: scale(0.85);
+                opacity: .5;
+                transform: scale(.8);
             }
         }
-        .user-status-text {
-            font-size: 0.65rem;
-            color: var(--text3);
-            display: flex;
-            align-items: center;
-            gap: 4px;
-        }
 
-        /* ===== PREMIUM BOOK BADGE ===== */
-        .book-premium-badge {
-            background: linear-gradient(135deg, var(--gold), var(--primary-light));
-            color: #000;
-            font-size: 0.55rem;
-            font-weight: 800;
-            padding: 0.1rem 0.5rem;
+        /* ===== NEW: Book Earnings Badge ===== */
+        .book-earnings-badge {
+            background: rgba(212, 175, 55, .08);
+            color: var(--gold);
+            border: 1px solid rgba(212, 175, 55, .15);
+            font-size: .65rem;
+            padding: .15rem .55rem;
             border-radius: 50px;
             display: inline-flex;
             align-items: center;
-            gap: 0.2rem;
-            font-family: var(--font-heading);
-            letter-spacing: 0.03em;
-        }
-        .book-premium-badge i {
-            font-size: 0.5rem;
-        }
-
-        /* ===== BOOK APPROVAL STATUS BADGES ===== */
-        .book-status-pending {
-            background: rgba(251, 146, 60, .12);
-            color: var(--orange);
-            border: 1px solid rgba(251, 146, 60, .2);
-        }
-        .book-status-approved {
-            background: rgba(52, 211, 153, .12);
-            color: var(--success);
-            border: 1px solid rgba(52, 211, 153, .2);
-        }
-        .book-status-rejected {
-            background: rgba(248, 113, 113, .12);
-            color: var(--danger);
-            border: 1px solid rgba(248, 113, 113, .2);
-        }
-
-        /* ===== PREMIUM LOCK OVERLAY ON BOOKS ===== */
-        .book-premium-lock {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, .6);
-            backdrop-filter: blur(4px);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            border-radius: var(--radius);
-            color: #fff;
-            z-index: 2;
-            gap: 0.5rem;
-        }
-        .book-premium-lock i {
-            font-size: 2.2rem;
-            color: var(--gold);
-        }
-        .book-premium-lock span {
-            font-size: 0.78rem;
-            font-weight: 600;
-            font-family: var(--font-heading);
-            color: #fff;
-            text-shadow: 0 2px 8px rgba(0, 0, 0, .5);
-        }
-        .book-premium-lock .btn-sm {
-            font-size: 0.65rem;
-            padding: 0.2rem 0.8rem;
-        }
-
-        /* ===== ADMIN PENDING BOOKS ===== */
-        .admin-pending-book-card {
-            background: var(--bg2);
-            border: 1px solid var(--border);
-            border-radius: var(--radius-sm);
-            padding: 0.85rem;
-            margin-bottom: 0.6rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            transition: all .2s;
-        }
-        .admin-pending-book-card:hover {
-            border-color: var(--border2);
-        }
-        .admin-pending-book-card .book-info {
-            flex: 1;
-            min-width: 200px;
-        }
-        .admin-pending-book-card .book-info strong {
-            font-size: .88rem;
-            display: block;
-        }
-        .admin-pending-book-card .book-info .meta {
-            font-size: .72rem;
-            color: var(--text3);
-            display: flex;
-            gap: 0.75rem;
-            flex-wrap: wrap;
-            margin-top: .2rem;
-        }
-        .admin-pending-book-card .book-actions {
-            display: flex;
-            gap: .4rem;
-        }
-        .admin-pending-book-card .book-actions button {
-            font-size: .72rem;
-            padding: .2rem .7rem;
-            min-height: 32px;
+            gap: .3rem;
         }
     </style>
 </head>
@@ -5459,19 +5379,22 @@
 
                     <!-- UPLOAD BOOK (Premium Only) -->
                     <div id="dash-create-book" class="dash-sub premium-only">
-                        <div class="page-hd"><h2 class="page-title">📚 Upload Book</h2><p class="page-sub">Publish your book for admin approval. Premium users only.</p></div>
+                        <div class="page-hd"><h2 class="page-title">📚 Upload Book</h2><p class="page-sub">Publish your book for admin approval. Premium users only. You earn <strong style="color:var(--primary)">80%</strong> of each sale.</p></div>
                         <div id="bookUploadStatus" style="display:none;" class="card card-p mb-3"></div>
                         <div class="card card-p">
                             <div class="form-group"><label class="flabel">Book Title *</label><input type="text" class="finput" id="bookUploadTitle" placeholder="Enter book title" /></div>
                             <div class="form-group"><label class="flabel">Author *</label><input type="text" class="finput" id="bookUploadAuthor" placeholder="Author name" /></div>
                             <div class="form-group"><label class="flabel">Description</label><textarea class="finput" id="bookUploadDesc" rows="3" placeholder="Book description..."></textarea></div>
-                            <div class="form-group"><label class="flabel">Price (₦)</label><input type="number" class="finput" id="bookUploadPrice" placeholder="0 for free" min="0" value="0" /></div>
+                            <div class="row">
+                                <div class="col-12 col-md-6"><div class="form-group"><label class="flabel">Price (₦) *</label><input type="number" class="finput" id="bookUploadPrice" placeholder="0 for free" min="0" value="0" /></div></div>
+                                <div class="col-12 col-md-6"><div class="form-group"><label class="flabel">Is Premium?</label><select class="finput" id="bookUploadIsPremium"><option value="false">Free — All users</option><option value="true">Premium — Only premium users</option></select></div></div>
+                            </div>
                             <div class="form-group"><label class="flabel">Cover Image URL</label><input type="url" class="finput" id="bookUploadCover" placeholder="https://example.com/cover.jpg" oninput="previewBookCover(this.value)" /></div>
                             <div id="bookUploadCoverPreview" style="display:none;"><img id="bookUploadCoverPreviewImg" style="max-width:150px;border-radius:var(--radius-sm);border:1px solid var(--border);" /></div>
                             <div class="form-group"><label class="flabel">Book PDF URL *</label><input type="url" class="finput" id="bookUploadFile" placeholder="https://example.com/book.pdf" oninput="previewBookFile(this.value)" /></div>
                             <div id="bookUploadFilePreview" style="display:none;"><span class="badge badge-success">✅ PDF URL provided</span></div>
                             <div class="form-group"><label class="flabel">Affiliate Commission (%)</label><input type="number" class="finput" id="bookUploadAffiliate" placeholder="e.g. 15" min="0" max="50" value="0" /></div>
-                            <div class="info-box"><i class="fas fa-info-circle" style="color:var(--primary)"></i>You earn <strong>80%</strong> of each sale. Platform takes 20%. Affiliates earn the percentage you set.</div>
+                            <div class="info-box"><i class="fas fa-info-circle" style="color:var(--primary)"></i>You earn <strong>80%</strong> of each sale. Platform takes 20%. Affiliates earn the percentage you set. All books go through admin approval before going live.</div>
                             <button class="btn btn-primary btn-lg w-full mt-3" onclick="submitBookForApproval()"><i class="fas fa-paper-plane"></i> Submit for Approval</button>
                         </div>
                     </div>
@@ -5521,7 +5444,7 @@
                     <div id="dash-settings" class="dash-sub"><div class="page-hd"><h2 class="page-title">Settings</h2><p class="page-sub">Manage your account &amp; preferences</p></div><div class="set-tabs"><div class="set-tab active" onclick="switchSet('ss-profile',this)">Profile</div><div class="set-tab" onclick="switchSet('ss-security',this)">Security</div><div class="set-tab" onclick="switchSet('ss-payout',this)">Payouts</div><div class="set-tab" onclick="switchSet('ss-subscription',this)">Subscription</div><div class="set-tab" onclick="switchSet('ss-prefs',this)">Preferences</div><div class="set-tab" onclick="switchSet('ss-notifs',this)">Notifications</div></div><div class="set-sec active" id="ss-profile"><div class="card card-p"><div class="d-flex items-center gap-3 mb-4 flex-wrap"><div class="um-av" id="settingsAv" style="width:64px;height:64px;font-size:1.4rem;background:linear-gradient(135deg,var(--primary),var(--secondary))">U</div><div><h5 style="margin-bottom:.2rem" id="settingsName">User</h5><div id="settingsRoles"><span class="badge badge-cyan">Student</span></div></div><button class="btn btn-ghost btn-sm" style="margin-left:auto" onclick="document.getElementById('avatarFileInput').click()"><i class="fas fa-camera"></i>Change Photo</button><input type="file" id="avatarFileInput" accept="image/*" style="display:none" onchange="uploadAvatar(this)"/></div><div class="row"><div class="col-12 col-md-6"><div class="form-group"><label class="flabel">First Name</label><input type="text" class="finput" id="setFirstName" value=""/></div></div><div class="col-12 col-md-6"><div class="form-group"><label class="flabel">Last Name</label><input type="text" class="finput" id="setLastName" value=""/></div></div></div><div class="form-group"><label class="flabel">Email</label><input type="email" class="finput" id="setEmail" readonly/></div><div class="form-group"><label class="flabel">Phone</label><input type="tel" class="finput" id="setPhone" value=""/></div><div class="form-group"><label class="flabel">Bio</label><textarea class="finput" id="setBio" style="min-height:80px;resize:vertical" placeholder="Tell the world about yourself..."></textarea></div><div class="form-group"><label class="flabel">Location</label><input type="text" class="finput" id="setLocation" placeholder="e.g. Lagos, Nigeria"/></div><button class="btn btn-primary" onclick="saveProfile()"><i class="fas fa-save"></i>Save Profile</button></div></div><div class="set-sec" id="ss-security"><div class="card card-p"><h5 style="margin-bottom:1rem">Security Settings</h5><div class="form-group"><label class="flabel">Current Password</label><input type="password" class="finput" id="secCurrentPw" placeholder="••••••••"/></div><div class="form-group"><label class="flabel">New Password</label><input type="password" class="finput" id="secNewPw" placeholder="Min 8 characters"/></div><div class="form-group"><label class="flabel">Confirm Password</label><input type="password" class="finput" id="secConfirmPw" placeholder="Repeat new password"/></div><button class="btn btn-primary" onclick="changePassword()"><i class="fas fa-lock"></i>Update Password</button></div></div><div class="set-sec" id="ss-payout"><div class="card card-p"><h5 style="margin-bottom:.7rem">Payout Settings</h5><p style="font-size:.76rem;color:var(--text3);margin-bottom:1rem">Bank details are required before you can withdraw your earnings.</p><div class="form-group"><label class="flabel">Bank</label><select class="finput" id="payoutBank"><option value="">Select Bank</option><option>GTBank</option><option>Access Bank</option><option>Zenith Bank</option><option>UBA</option><option>First Bank</option><option>Opay</option><option>Palmpay</option><option>Kuda Bank</option><option>Moniepoint</option></select></div><div class="row"><div class="col-12 col-md-6"><div class="form-group"><label class="flabel">Account Number</label><input type="text" class="finput" id="payoutAccNum" placeholder="0123456789" maxlength="10"/></div></div><div class="col-12 col-md-6"><div class="form-group"><label class="flabel">Account Name</label><input type="text" class="finput" id="payoutAccName" placeholder="Enter your full name"/></div></div></div><div id="payoutSaveStatus" style="font-size:.76rem;margin-bottom:.75rem;min-height:1.2em"></div><button class="btn btn-primary" onclick="savePayoutSettings()"><i class="fas fa-save"></i>Save Bank Details</button></div></div><div class="set-sec" id="ss-subscription"><div class="card card-p" id="subStatusCard"></div></div><div class="set-sec" id="ss-prefs"><div class="card card-p"><h5 style="margin-bottom:1rem">Preferences</h5><div style="display:flex;flex-direction:column;gap:.55rem"><div class="d-flex items-center justify-between p-3" style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-sm)"><div><div style="font-size:.83rem;font-weight:600">Autoplay Next Lesson</div><div style="font-size:.72rem;color:var(--text3)">Continue automatically</div></div><input type="checkbox" checked style="accent-color:var(--primary);width:15px;height:15px;cursor:pointer"/></div><div class="d-flex items-center justify-between p-3" style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-sm)"><div><div style="font-size:.83rem;font-weight:600">Daily Streak Reminder</div><div style="font-size:.72rem;color:var(--text3)">Push notification daily</div></div><input type="checkbox" checked style="accent-color:var(--primary);width:15px;height:15px;cursor:pointer"/></div><div class="d-flex items-center justify-between p-3" style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-sm)"><div><div style="font-size:.83rem;font-weight:600">Preferred Currency</div><div style="font-size:.72rem;color:var(--text3)">Display earnings in</div></div><div class="currency-select"><span class="currency-opt" id="prefNGN" onclick="updateCurrencyPreference('NGN')">₦</span><span class="currency-opt" id="prefUSD" onclick="updateCurrencyPreference('USD')">$</span><span class="currency-opt" id="prefGBP" onclick="updateCurrencyPreference('GBP')">£</span><span class="currency-opt" id="prefEUR" onclick="updateCurrencyPreference('EUR')">€</span></div></div></div></div></div><div class="set-sec" id="ss-notifs"><div class="card card-p"><h5 style="margin-bottom:1rem">Notification Settings</h5><div id="notifSettingsList"></div><button class="btn btn-primary mt-4" onclick="toast('Preferences saved!','success')"><i class="fas fa-save"></i>Save</button></div></div></div>
 
                     <!-- ADMIN -->
-                    <div id="dash-admin" class="dash-sub"><div class="admin-hd"><div class="si si-d" style="width:44px;height:44px;font-size:1.1rem"><i class="fas fa-shield-alt"></i></div><div><h4 style="margin:0">Admin Panel</h4><p style="font-size:.78rem;color:var(--text2);margin:.12rem 0 0">Super admin · All actions logged · Actions affect user dashboards live</p></div><div style="margin-left:0"><span class="badge badge-danger">SUPER ADMIN</span></div></div><div class="row"><div class="col-12"><div style="display:flex;gap:.28rem;flex-wrap:wrap;overflow-x:auto;margin-bottom:.75rem;padding-bottom:.2rem"><span class="fpill active" onclick="switchAdm('dashboard',this)">Dashboard</span><span class="fpill" onclick="switchAdm('users',this)">Users</span><span class="fpill" onclick="switchAdm('courses',this)">Courses</span><span class="fpill" onclick="switchAdm('approvals',this)">Approvals</span><span class="fpill" onclick="switchAdm('withdrawals',this)">Payouts</span><span class="fpill" onclick="switchAdm('manualPayments',this)">Manual Pay</span><span class="fpill" onclick="switchAdm('coupons',this)">Coupons</span><span class="fpill" onclick="switchAdm('announcements',this)">Announce</span><span class="fpill" onclick="switchAdm('challenges',this)">Challenges</span><span class="fpill" onclick="switchAdm('ads',this)">Ads</span><span class="fpill" onclick="switchAdm('affiliates',this)">Affiliates</span><span class="fpill" onclick="switchAdm('books',this)">Books</span><span class="fpill" onclick="switchAdm('social-earnings',this)">Social Earnings</span><span class="fpill" onclick="switchAdm('audit',this)">Audit</span></div><div id="adminContent"></div></div></div></div>
+                    <div id="dash-admin" class="dash-sub"><div class="admin-hd"><div class="si si-d" style="width:44px;height:44px;font-size:1.1rem"><i class="fas fa-shield-alt"></i></div><div><h4 style="margin:0">Admin Panel</h4><p style="font-size:.78rem;color:var(--text2);margin:.12rem 0 0">Super admin · All actions logged · Actions affect user dashboards live</p></div><div style="margin-left:0"><span class="badge badge-danger">SUPER ADMIN</span></div></div><div class="row"><div class="col-12"><div style="display:flex;gap:.28rem;flex-wrap:wrap;overflow-x:auto;margin-bottom:.75rem;padding-bottom:.2rem"><span class="fpill active" onclick="switchAdm('dashboard',this)">Dashboard</span><span class="fpill" onclick="switchAdm('users',this)">Users</span><span class="fpill" onclick="switchAdm('courses',this)">Courses</span><span class="fpill" onclick="switchAdm('approvals',this)">Approvals</span><span class="fpill" onclick="switchAdm('withdrawals',this)">Payouts</span><span class="fpill" onclick="switchAdm('manualPayments',this)">Manual Pay</span><span class="fpill" onclick="switchAdm('coupons',this)">Coupons</span><span class="fpill" onclick="switchAdm('announcements',this)">Announce</span><span class="fpill" onclick="switchAdm('challenges',this)">Challenges</span><span class="fpill" onclick="switchAdm('ads',this)">Ads</span><span class="fpill" onclick="switchAdm('affiliates',this)">Affiliates</span><span class="fpill" onclick="switchAdm('books',this)">Books</span><span class="fpill" onclick="switchAdm('social-earnings',this)">Social Earnings</span><span class="fpill" onclick="switchAdm('audit',this)">Audit</span><span class="fpill" onclick="switchAdm('pending-books',this)" style="color:var(--orange)">📚 Pending Books</span></div><div id="adminContent"></div></div></div></div>
                 </div></div></div></div>
 
     <!-- ===== FAB ===== -->
@@ -5667,12 +5590,9 @@
             convertFileData: null,
             convertedFileData: null,
             convertedFileType: '',
-            // ─── New: Premium Books & Admin Approval ──────────────────
+            // ─── Premium Books ────────────────────────────────────────
             pendingBooks: [],
-            bookApprovalFilter: 'all',
-            // ─── Online/Offline status tracking ──────────────────────
-            onlineUsers: {},
-            userStatuses: {}
+            bookEarnings: 0,
         };
 
         // ═══════════════════════════════════════════════════════════════
@@ -5743,20 +5663,6 @@
         function throttle(fn, limit = 200) { let last = 0; return (...args) => { const now = Date.now(); if (now - last >=
                     limit) { fn(...args);
                     last = now; } }; }
-
-        // ─── Time ago helper ──────────────────────────────────────────
-        function timeAgo(date) {
-            if (!date) return 'Never';
-            const diff = Date.now() - new Date(date).getTime();
-            const mins = Math.floor(diff / 60000);
-            if (mins < 1) return 'Just now';
-            if (mins < 60) return mins + 'm ago';
-            const hrs = Math.floor(mins / 60);
-            if (hrs < 24) return hrs + 'h ago';
-            const days = Math.floor(hrs / 24);
-            if (days < 7) return days + 'd ago';
-            return new Date(date).toLocaleDateString();
-        }
 
         // ================================================================
         // TOAST
@@ -5910,7 +5816,7 @@
             'hidden'); });
 
         // ================================================================
-        // SOCKET.IO – Enhanced with Online/Offline Status & Missed Notifications
+        // SOCKET.IO
         // ================================================================
         function connectSocket() {
             const userId = S.user?._id;
@@ -5920,65 +5826,13 @@
                 socket = io(API_BASE.replace('/api/v1', ''), { auth: { token }, withCredentials: true, transports: [
                         'websocket', 'polling'
                     ] });
-                socket.on('connect', () => {
-                    console.log('Socket connected');
-                    setupAdminSocketAlerts();
-                    // Request missed notifications
-                    socket.emit('getMissedNotifications', { userId });
-                });
-                socket.on('notification', (notif) => {
-                    S.notifications.unshift({ ...notif, unread: true, time: new Date(notif.createdAt)
-                            .toLocaleTimeString(), bg: 'si-primary', ic: notif.icon || 'fa-bell' });
+                socket.on('connect', () => { console.log('Socket connected');
+                    setupAdminSocketAlerts(); });
+                socket.on('notification', (notif) => { S.notifications.unshift({ ...notif, unread: true, time: new Date(
+                            notif.createdAt).toLocaleTimeString(), bg: 'si-primary', ic: notif.icon || 'fa-bell' });
                     renderNotifs();
                     toast(notif.title || 'New notification', 'info');
-                    document.getElementById('notifDot').style.display = 'block';
-                });
-                // ─── Missed notifications delivery ────────────────────
-                socket.on('missedNotifications', (notifs) => {
-                    if (notifs && notifs.length) {
-                        notifs.forEach(n => {
-                            S.notifications.unshift({ ...n, unread: true, time: new Date(n.createdAt)
-                                    .toLocaleTimeString(), bg: 'si-primary', ic: n.icon || 'fa-bell' });
-                        });
-                        renderNotifs();
-                        document.getElementById('notifDot').style.display = 'block';
-                        toast(`📬 ${notifs.length} new notification${notifs.length > 1 ? 's' : ''} while you were away`,
-                            'info');
-                    }
-                });
-                // ─── Online/Offline status updates ────────────────────
-                socket.on('userStatus', ({ userId, online, lastSeen }) => {
-                    S.userStatuses[userId] = { online, lastSeen };
-                    // Update UI if people list is visible
-                    if (S.dp === 'people') {
-                        const card = document.querySelector(`.person-card[data-user-id="${userId}"]`);
-                        if (card) {
-                            const statusEl = card.querySelector('.user-status-text');
-                            if (statusEl) {
-                                statusEl.innerHTML = online ?
-                                    '<span class="online-dot"></span> Online' :
-                                    `<span class="online-dot offline"></span> Last seen ${timeAgo(lastSeen)}`;
-                            }
-                        }
-                    }
-                    if (S.dp === 'profile' && S.profileUser && S.profileUser._id === userId) {
-                        const statusEl = document.querySelector('#profileContent .user-status-text');
-                        if (statusEl) {
-                            statusEl.innerHTML = online ?
-                                '<span class="online-dot"></span> Online' :
-                                `<span class="online-dot offline"></span> Last seen ${timeAgo(lastSeen)}`;
-                        }
-                    }
-                });
-                // ─── Bulk user status (for people list) ──────────────
-                socket.on('usersStatus', (statuses) => {
-                    if (statuses) {
-                        Object.keys(statuses).forEach(id => {
-                            S.userStatuses[id] = statuses[id];
-                        });
-                        if (S.dp === 'people') renderPeople(S.users);
-                    }
-                });
+                    document.getElementById('notifDot').style.display = 'block'; });
                 socket.on('affiliate-offer', (data) => { toast(
                         `📢 New Affiliate Offer: ${data.title} - ${data.affiliatePercent}% commission!`, 'info');
                     S.notifications.unshift({ _id: Date.now(), title: 'New Affiliate Offer Available!',
@@ -6006,6 +5860,16 @@
                 socket.on('book_rejected', (data) => {
                     toast(`❌ Your book "${data.title}" was rejected`, 'error');
                     if (S.dp === 'books') loadBooks();
+                    if (S.dp === 'create-book') {
+                        document.getElementById('bookUploadStatus').style.display = 'block';
+                        document.getElementById('bookUploadStatus').innerHTML = `
+                            <div class="d-flex items-center gap-3"><div class="si si-d"><i class="fas fa-times-circle"></i></div><div><strong>Book Rejected</strong><p style="margin:0;font-size:.82rem;color:var(--text2);">${data.reason || 'No reason provided'}</p></div></div>
+                        `;
+                    }
+                });
+                socket.on('book_submitted', (data) => {
+                    toast(`📚 New book submitted: "${data.title}" by ${data.author}`, 'info');
+                    if (S.dp === 'admin' && S.admSec === 'pending-books') loadPendingBooks();
                 });
                 socket.on('disconnect', () => { console.log('Socket disconnected'); });
                 socket.on('new_post', (post) => {
@@ -6045,6 +5909,7 @@
                     toast(`📚 New book: ${data.title}`, 'info');
                     if (S.dp === 'books') loadBooks();
                     if (S.dp === 'admin' && S.admSec === 'books') loadAdminBooks();
+                    if (S.dp === 'admin' && S.admSec === 'pending-books') loadPendingBooks();
                 });
                 socket.on('book_updated', (data) => {
                     toast(`📚 Book updated: ${data.title}`, 'info');
@@ -6055,17 +5920,32 @@
                     toast(`📚 Book removed: ${data.title}`, 'info');
                     if (S.dp === 'books') loadBooks();
                     if (S.dp === 'admin' && S.admSec === 'books') loadAdminBooks();
+                    if (S.dp === 'admin' && S.admSec === 'pending-books') loadPendingBooks();
                 });
-                // ─── Book approval notifications ──────────────────────
-                socket.on('book_status_changed', (data) => {
-                    if (data.status === 'approved') {
-                        toast(`📚 "${data.title}" has been approved and is now live!`, 'success');
-                    } else if (data.status === 'rejected') {
-                        toast(`📚 "${data.title}" was not approved. Reason: ${data.reason || 'Not specified'}`,
-                            'error');
+                socket.on('user_online', (data) => {
+                    const userId = data.userId;
+                    const user = S.users.find(u => u._id === userId);
+                    if (user) { user.online = true;
+                        user.lastSeen = null; }
+                    if (S.dp === 'people') renderPeople(S.users);
+                    if (S.dp === 'profile' && S.profileUser && S.profileUser._id === userId) {
+                        S.profileUser.online = true;
+                        renderUserProfile({ user: S.profileUser, posts: [], courses: [], challengeProgress: [],
+                            followersCount: 0, followingCount: 0, isFollowing: false });
                     }
-                    if (S.dp === 'books') loadBooks();
-                    if (S.dp === 'admin' && S.admSec === 'books') loadAdminBooks();
+                });
+                socket.on('user_offline', (data) => {
+                    const userId = data.userId;
+                    const user = S.users.find(u => u._id === userId);
+                    if (user) { user.online = false;
+                        user.lastSeen = data.lastSeen || new Date().toISOString(); }
+                    if (S.dp === 'people') renderPeople(S.users);
+                    if (S.dp === 'profile' && S.profileUser && S.profileUser._id === userId) {
+                        S.profileUser.online = false;
+                        S.profileUser.lastSeen = data.lastSeen || new Date().toISOString();
+                        renderUserProfile({ user: S.profileUser, posts: [], courses: [], challengeProgress: [],
+                            followersCount: 0, followingCount: 0, isFollowing: false });
+                    }
                 });
             } catch (e) { console.warn('Socket init failed:', e.message); }
         }
@@ -6549,6 +6429,7 @@
                 document.getElementById('planWarningText').textContent =
                     '🔓 Your Premium plan has expired. You have been reverted to free plan. Subscribe again to regain premium features.';
                 toast('🔓 Premium has expired', 'error');
+                // Refresh user data to reflect downgrade
                 await refreshUserData();
             } else {
                 document.getElementById('planWarning').style.display = 'none';
@@ -7060,6 +6941,7 @@
                             ${isAuthor ? `<span class="badge badge-dark" style="font-size:.55rem">You</span>` : ''}
                             ${post.isPremiumOnly ? `<span class="badge badge-gold" style="font-size:.55rem">Premium</span>` : ''}
                             ${scoreBadge}
+                            ${author.online ? `<span class="online-dot" title="Online"></span>` : ''}
                         </div>
                         <div style="margin-left:auto;display:flex;gap:.2rem">
                             ${isAuthor || isAdmin ? `<button class="post-delete-btn" onclick="deletePost('${post._id}')" title="Delete post"><i class="fas fa-trash"></i></button>` : ''}
@@ -7337,15 +7219,10 @@
                     const avatarHtml = getAvatarUrl(u) ?
                         `<img src="${getAvatarUrl(u)}" alt="${u.firstName || 'U'}" style="width:100%;height:100%;border-radius:50%;object-fit:cover;">` :
                         (u.firstName?.[0] || 'U');
-                    const status = S.userStatuses[u._id] || {};
-                    const statusHtml = status.online !== undefined ?
-                        `<div class="user-status-text">${status.online ? '<span class="online-dot"></span> Online' : `<span class="online-dot offline"></span> Last seen ${timeAgo(status.lastSeen)}`}</div>` :
-                        '';
                     html += `
                         <div class="following-item" onclick="openUserProfile('${u._id}')">
-                            <div class="fi-header"><div class="fi-avatar" style="background:linear-gradient(135deg,var(--primary),var(--secondary));">${avatarHtml}</div><div class="fi-name">${escapeHtml(u.firstName || 'User')} ${escapeHtml(u.lastName || '')}</div>${u.isPremium ? '<span class="badge badge-gold" style="font-size:.55rem">Premium</span>' : ''}</div>
+                            <div class="fi-header"><div class="fi-avatar" style="background:linear-gradient(135deg,var(--primary),var(--secondary));">${avatarHtml}</div><div class="fi-name">${escapeHtml(u.firstName || 'User')} ${escapeHtml(u.lastName || '')}</div>${u.isPremium ? '<span class="badge badge-gold" style="font-size:.55rem">Premium</span>' : ''}${u.online ? '<span class="online-dot" title="Online"></span>' : ''}</div>
                             <div class="fi-content">${escapeHtml(u.bio?.substring(0, 80) || 'No bio')}</div>
-                            ${statusHtml}
                         </div>`;
                 });
                 html += `</div><hr style="margin:1rem 0;">`;
@@ -7510,7 +7387,7 @@
         }
 
         // ================================================================
-        // PEOPLE – with Followers section & Online Status
+        // PEOPLE – with Followers section
         // ================================================================
         async function loadPeople() {
             showLoading('Loading users...');
@@ -7543,10 +7420,6 @@
                 });
                 await Promise.all(followPromises);
                 if (!S.followersCount && S.user) await loadFollowers();
-                // Request online statuses for all users via socket
-                if (socket && socket.connected) {
-                    socket.emit('getUsersStatus', users.map(u => u._id));
-                }
                 renderPeople(users);
             } catch (err) {
                 toast('Failed to load users: ' + err.message, 'error');
@@ -7575,19 +7448,15 @@
                     const avatarHtml = getAvatarUrl(f) ?
                         `<img src="${getAvatarUrl(f)}" alt="${f.firstName || 'F'}" style="width:100%;height:100%;border-radius:50%;object-fit:cover;">` :
                         (f.firstName?.[0] || 'F');
-                    const status = S.userStatuses[f._id] || {};
-                    const statusHtml = status.online !== undefined ?
-                        `<div class="user-status-text">${status.online ? '<span class="online-dot"></span> Online' : `<span class="online-dot offline"></span> ${timeAgo(status.lastSeen)}`}</div>` :
-                        '';
                     followersHtml += `
-                        <div class="follower-card" onclick="openUserProfile('${f._id}')" data-user-id="${f._id}">
+                        <div class="follower-card" onclick="openUserProfile('${f._id}')">
                             <div class="fc-avatar">${avatarHtml}</div>
                             <div class="fc-info">
                                 <div class="fc-name">${escapeHtml(f.firstName || 'User')} ${escapeHtml(f.lastName || '')}</div>
                                 <div class="fc-bio">${escapeHtml(f.bio?.substring(0, 40) || '')}</div>
-                                ${statusHtml}
                             </div>
                             ${f.isPremium ? '<span class="badge badge-gold fc-badge">Premium</span>' : ''}
+                            ${f.online ? '<span class="online-dot" title="Online"></span>' : ''}
                         </div>
                     `;
                 });
@@ -7606,22 +7475,18 @@
                     const avatarHtml = getAvatarUrl(u) ?
                         `<img src="${getAvatarUrl(u)}" alt="${u.firstName || 'U'}" style="width:100%;height:100%;border-radius:50%;object-fit:cover;">` :
                         (u.firstName?.[0] || 'U');
-                    const status = S.userStatuses[u._id] || {};
-                    const statusHtml = status.online !== undefined ?
-                        `<div class="user-status-text">${status.online ? '<span class="online-dot"></span> Online' : `<span class="online-dot offline"></span> ${timeAgo(status.lastSeen)}`}</div>` :
-                        '';
                     return `
-                        <div class="person-card card card-p" onclick="openUserProfile('${u._id}')" data-user-id="${u._id}">
+                        <div class="person-card card card-p" onclick="openUserProfile('${u._id}')">
                             <div class="person-avatar" style="background:linear-gradient(135deg,var(--primary),var(--secondary));">
                                 ${avatarHtml}
                             </div>
                             <div class="person-info">
                                 <strong>${escapeHtml(u.firstName || 'User')} ${escapeHtml(u.lastName || '')}</strong>
                                 <span>${escapeHtml(u.bio?.substring(0, 60) || 'No bio')}</span>
-                                ${statusHtml}
                                 ${u.isApprovedInstructor ? '<span class="badge badge-violet" style="font-size:.55rem">Instructor</span>' : ''}
                                 ${u.isPremium ? '<span class="badge badge-gold" style="font-size:.55rem">Premium</span>' : ''}
                                 ${u._id !== S.user?._id && isFollowing ? '<span class="follow-badge"><i class="fas fa-check"></i> Following</span>' : ''}
+                                ${u.online ? '<span class="online-dot" title="Online"></span>' : ''}
                             </div>
                             ${u._id !== S.user?._id ? `<button class="btn-follow ${isFollowing ? 'following' : ''}" onclick="event.stopPropagation();followUser('${u._id}')">${isFollowing ? 'Following' : 'Follow'}</button>` : '<span class="badge badge-dark">You</span>'}
                         </div>`;
@@ -7701,10 +7566,6 @@
                 (user.firstName?.[0] || 'U');
             const isAdmin = S.user?.roles?.includes('admin');
             const canSeeEarnings = isOwnProfile || isAdmin;
-            const status = S.userStatuses[user._id] || {};
-            const statusHtml = status.online !== undefined ?
-                `<div class="user-status-text">${status.online ? '<span class="online-dot"></span> Online' : `<span class="online-dot offline"></span> Last seen ${timeAgo(status.lastSeen)}`}</div>` :
-                '';
 
             container.innerHTML = `
                 <div class="profile-header" style="display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap;background:var(--bg2);padding:1.5rem;border-radius:var(--radius);margin-bottom:1.5rem;">
@@ -7712,8 +7573,7 @@
                         ${avatarHtml}
                     </div>
                     <div style="flex:1;">
-                        <h2>${escapeHtml(user.firstName)} ${escapeHtml(user.lastName)}</h2>
-                        ${statusHtml}
+                        <h2>${escapeHtml(user.firstName)} ${escapeHtml(user.lastName)} ${user.online ? '<span class="online-dot" title="Online"></span>' : ''}</h2>
                         <p style="color:var(--text2);">${escapeHtml(user.bio || 'No bio yet')}</p>
                         <div style="display:flex;gap:1rem;font-size:.85rem;color:var(--text3);flex-wrap:wrap;">
                             <span><strong>${data.followersCount || 0}</strong> followers</span>
@@ -7722,6 +7582,7 @@
                             ${canSeeEarnings ? `<span><strong>${fmtMoneyAPI(totalEarnings)}</strong> earned from posts</span>` : ''}
                             ${user.isPremium ? '<span class="badge badge-gold">Premium</span>' : ''}
                             ${user.isApprovedInstructor ? '<span class="badge badge-violet">Instructor</span>' : ''}
+                            ${user.lastSeen && !user.online ? `<span style="font-size:.7rem;color:var(--text3);">Last seen ${new Date(user.lastSeen).toLocaleString()}</span>` : ''}
                         </div>
                         ${user._id !== S.user?._id ? `<button class="btn-follow ${isFollowing ? 'following' : ''}" onclick="followUser('${user._id}')" style="margin-top:.5rem;">${isFollowing ? 'Unfollow' : 'Follow'}</button>` : ''}
                     </div>
@@ -8076,39 +7937,6 @@
                 `<div style="display:flex;align-items:center;gap:.75rem;padding:.75rem;background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-sm)"><div style="font-size:2rem">${c.thumbnail || c.emoji || '📚'}</div><div><div style="font-weight:700;font-size:.92rem">${c.title}</div><div style="font-size:.75rem;color:var(--text3)">${c.instructor?.firstName || 'Instructor'} · ${c.totalLessons || 0} lessons · 👁️ ${c.views || 0}</div></div></div>`;
             document.getElementById('buyCourseSummary').innerHTML =
                 `<div class="pay-summary-row"><span>Course Price</span><span>${fmtMoneyAPI(c.price || 0)}</span></div><div class="pay-summary-row"><span style="font-weight:700">Total</span><span style="color:var(--primary);font-weight:800">${fmtMoneyAPI(price)}</span></div>`;
-            document.getElementById('paystackBtnText').textContent = `Pay ${fmtMoneyAPI(price)} with Paystack`;
-            document.getElementById('manualAmount').value = price;
-            document.getElementById('buyRefCode').value = '';
-            document.getElementById('buyCodeStatus').textContent = '';
-            document.getElementById('buyManualRefCode').value = '';
-            document.getElementById('buyManualCodeStatus').textContent = '';
-            document.getElementById('manualRef').value = '';
-            document.getElementById('manualDate').value = '';
-            document.getElementById('manualReceipt').value = '';
-            document.getElementById('receiptPreview').style.display = 'none';
-            populateAllBankDetailsBoxes();
-            toggleBuyPaymentMethod('card', document.querySelector('#buyCourseModal .payment-method-tab'));
-            openModal('buyCourseModal');
-        }
-
-        function openBuyBook(bookId) {
-            const book = S.currentBook || S.books.find(b => b._id === bookId);
-            if (!book) { toast('Book not found', 'error'); return; }
-            // Check if book is premium and user is not premium
-            if (book.isPremium && !S.isPremium && !S.user?.roles?.includes('admin')) {
-                toast('👑 This book is for Premium users only.', 'warning');
-                openModal('premiumModal');
-                return;
-            }
-            trackBookView(bookId);
-            currentPaymentType = 'book';
-            currentManualBookId = bookId;
-            S.currentBuyBook = book;
-            const price = book.price || 0;
-            document.getElementById('buyCourseInfo').innerHTML =
-                `<div style="display:flex;align-items:center;gap:.75rem;padding:.75rem;background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-sm)"><div style="font-size:2rem">${book.coverImage ? `<img src="${book.coverImage}" style="width:50px;height:50px;object-fit:cover;border-radius:var(--radius-sm)">` : '📖'}</div><div><div style="font-weight:700;font-size:.92rem">${book.title}</div><div style="font-size:.75rem;color:var(--text3)">By ${book.author || 'Unknown'} · 👁️ ${book.views || 0}${book.isPremium ? ' · <span class="badge badge-premium">👑 Premium</span>' : ''}</div></div></div>`;
-            document.getElementById('buyCourseSummary').innerHTML =
-                `<div class="pay-summary-row"><span>Book Price</span><span>${fmtMoneyAPI(price)}</span></div><div class="pay-summary-row"><span style="font-weight:700">Total</span><span style="color:var(--primary);font-weight:800">${fmtMoneyAPI(price)}</span></div>`;
             document.getElementById('paystackBtnText').textContent = `Pay ${fmtMoneyAPI(price)} with Paystack`;
             document.getElementById('manualAmount').value = price;
             document.getElementById('buyRefCode').value = '';
@@ -8908,7 +8736,7 @@
                     const bankSelect = document.getElementById('withdrawBank');
                     if (bankSelect && banks.length) bankSelect.innerHTML = banks.map(b =>
                         `<option value="${b._id || b.accountNumber}">${b.bankName} - ${b.accountNumber}</option>`
-                        ).join('');
+                        ).join();
                 } catch (e) {}
             } catch (e) { console.warn('Wallet render error:', e); }
         }
@@ -9781,13 +9609,16 @@
         }
 
         // ================================================================
-        // BOOKS MODULE – WITH PREMIUM BOOKS + ADMIN APPROVAL + ONLINE STATUS
+        // BOOKS MODULE – WITH HYBRID ADS FOR FREE USERS + PREMIUM BOOKS
         // ================================================================
         async function loadBooks() {
             showLoading('Loading books...');
             try {
                 const res = await apiCall(BOOKS_API);
                 S.books = res.data || [];
+                // Calculate book earnings
+                S.bookEarnings = S.books.filter(b => b.authorId?._id === S.user?._id || b.authorId === S.user?._id)
+                    .reduce((sum, b) => sum + (b.totalEarnings || 0), 0);
                 renderBooks(S.books);
             } catch (err) {
                 toast('Failed to load books: ' + err.message, 'error');
@@ -9809,67 +9640,39 @@
             let html = '';
             const showAds = !S.isPremium;
             const adFrequency = 3;
-            // Filter: only show approved books (and for non-owners, hide pending/rejected)
-            const visibleBooks = books.filter(b => {
-                const isOwner = b.authorId?._id === S.user?._id || b.authorId === S.user?._id;
-                // Always show books that are approved and published
-                if (b.approvalStatus === 'approved' && b.isPublished !== false) return true;
-                // Owners can see their own pending/rejected books
-                if (isOwner) return true;
-                // Admin can see all
-                if (S.user?.roles?.includes('admin')) return true;
-                return false;
-            });
-
-            visibleBooks.forEach((book, index) => {
+            const filteredBooks = books.filter(b => b.isPublished !== false && (b.approvalStatus === 'approved' || b
+                .approvalStatus === undefined));
+            filteredBooks.forEach((book, index) => {
                 const isOwner = book.authorId?._id === S.user?._id || book.authorId === S.user?._id;
-                const isAdmin = S.user?.roles?.includes('admin');
-                const isPremiumBook = book.isPremium === true;
-                const canAccess = !isPremiumBook || S.isPremium || isOwner || isAdmin;
-
+                const isPremium = book.isPremium === true;
                 let statusBadge = '';
                 if (isOwner && book.approvalStatus === 'pending') {
                     statusBadge = `<span class="badge badge-orange" style="font-size:.55rem">⏳ Pending</span>`;
                 } else if (isOwner && book.approvalStatus === 'approved') {
                     statusBadge = `<span class="badge badge-success" style="font-size:.55rem">✅ Approved</span>`;
                 } else if (isOwner && book.approvalStatus === 'rejected') {
-                    statusBadge =
-                    `<span class="badge badge-danger" style="font-size:.55rem">❌ Rejected${book.rejectionReason ? `: ${escapeHtml(book.rejectionReason)}` : ''}</span>`;
+                    statusBadge = `<span class="badge badge-danger" style="font-size:.55rem">❌ Rejected</span>`;
                 }
-                const premiumBadge = isPremiumBook ?
-                    `<span class="book-premium-badge"><i class="fas fa-crown"></i> Premium</span>` :
+                const isPremiumBadge = isPremium ? `<span class="badge badge-premium-book"><i class="fas fa-crown"></i> Premium</span>` :
                     '';
-                const approvalBadge = book.approvalStatus === 'pending' && isAdmin ?
-                    `<span class="badge badge-orange" style="font-size:.55rem">⏳ Pending Approval</span>` :
-                    '';
-
-                // Show lock overlay for premium books user can't access
-                let lockOverlay = '';
-                if (isPremiumBook && !canAccess) {
-                    lockOverlay = `
-                        <div class="book-premium-lock">
-                            <i class="fas fa-crown"></i>
-                            <span>Premium Only</span>
-                            <button class="btn btn-gold btn-sm" onclick="event.stopPropagation();openModal('premiumModal')">Upgrade</button>
-                        </div>
-                    `;
-                }
-
+                const showPrice = !isPremium || (isPremium && S.isPremium);
+                const priceDisplay = showPrice ? (book.price === 0 ? 'Free' : fmtMoneyAPI(book.price)) :
+                    '🔒 Premium Only';
+                const clickHandler = (isPremium && !S.isPremium) ? `onclick="openModal('premiumModal')"` :
+                    `onclick="openBookDetail('${book._id}')"`;
                 html += `
-                    <div class="book-card" onclick="${canAccess ? `openBookDetail('${book._id}')` : `event.stopPropagation();openModal('premiumModal')`}" style="position:relative;overflow:hidden;">
-                        <div class="book-cover" style="position:relative;">
-                            ${book.coverImage ? `<img src="${book.coverImage}" alt="${escapeHtml(book.title)}" loading="lazy">` : '📖'}
-                            ${lockOverlay}
-                        </div>
+                    <div class="book-card" ${clickHandler}>
+                        <div class="book-cover">${book.coverImage ? `<img src="${book.coverImage}" alt="${escapeHtml(book.title)}" loading="lazy">` : '📖'}</div>
                         <div class="book-body">
-                            <div class="book-title">${escapeHtml(book.title)} ${premiumBadge} ${statusBadge} ${approvalBadge}</div>
+                            <div class="book-title">${escapeHtml(book.title)} ${statusBadge} ${isPremiumBadge}</div>
                             <div class="book-author">By ${escapeHtml(book.author || 'Unknown')}</div>
-                            <div class="book-price">${book.price === 0 ? 'Free' : fmtMoneyAPI(book.price)}</div>
+                            <div class="book-price">${priceDisplay}</div>
                             <div class="book-meta">📥 ${book.downloads || 0} downloads · 👁️ ${book.views || 0} views</div>
+                            ${isOwner && book.totalEarnings > 0 ? `<div class="book-earnings-badge">💰 Earned: ${fmtMoneyAPI(book.totalEarnings)}</div>` : ''}
                         </div>
                     </div>
                 `;
-                if (showAds && (index + 1) % adFrequency === 0 && index < visibleBooks.length - 1) {
+                if (showAds && (index + 1) % adFrequency === 0 && index < filteredBooks.length - 1) {
                     const ad = getNextBookAd();
                     if (ad) {
                         const adHtml = renderAdCard(ad, null);
@@ -9900,29 +9703,13 @@
         function renderBookDetail(book) {
             const container = document.getElementById('bookDetailContent');
             if (!container) return;
-            const isPremiumBook = book.isPremium === true;
-            const isOwner = book.authorId?._id === S.user?._id || book.authorId === S.user?._id;
-            const isAdmin = S.user?.roles?.includes('admin');
-            const canAccess = !isPremiumBook || S.isPremium || isOwner || isAdmin;
             const isPurchased = book.isPurchased || false;
             const isFree = book.price === 0;
-            const canDownload = (isFree || isPurchased) && canAccess && book.approvalStatus === 'approved';
-            const isPending = book.approvalStatus === 'pending';
-            const isRejected = book.approvalStatus === 'rejected';
-
-            if (!canAccess) {
-                container.innerHTML = `
-                    <div class="card card-p text-center" style="padding:3rem 1.5rem;">
-                        <div style="font-size:4rem;margin-bottom:1rem;">👑</div>
-                        <h2>Premium Book</h2>
-                        <p style="color:var(--text3);max-width:400px;margin:0 auto 1.5rem;">This book is exclusively available to Premium members. Upgrade to unlock unlimited books, courses, and more.</p>
-                        <button class="btn btn-gold btn-lg" onclick="openModal('premiumModal')"><i class="fas fa-crown"></i> Upgrade to Premium</button>
-                        <button class="btn btn-ghost btn-sm mt-3" onclick="setDP('books')">← Back to Library</button>
-                    </div>
-                `;
-                return;
-            }
-
+            const isPremiumBook = book.isPremium === true;
+            const canAccess = isFree || isPurchased || (isPremiumBook && S.isPremium) || (book.authorId?._id === S.user?._id ||
+                book.authorId === S.user?._id);
+            const canDownload = canAccess && book.approvalStatus === 'approved';
+            const isOwner = book.authorId?._id === S.user?._id || book.authorId === S.user?._id;
             if (!S.isPremium && !S.bookAds.length) loadBookPageAds();
 
             let adHtml = '';
@@ -9937,7 +9724,7 @@
 
             // Show affiliate info if user is premium and book has affiliate
             let affiliateHtml = '';
-            if (book.affiliatePercent > 0 && S.isPremium && book.approvalStatus === 'approved') {
+            if (book.affiliatePercent > 0 && S.isPremium && !isOwner) {
                 const hasAffiliateLink = S.myAffiliateLinks.some(l => l.bookId === book._id);
                 affiliateHtml = `
                     <div style="margin-top:1rem;padding:0.75rem;background:rgba(212,175,55,.06);border:1px solid rgba(212,175,55,.2);border-radius:var(--radius-sm);">
@@ -9949,38 +9736,65 @@
                 `;
             }
 
-            let statusMessage = '';
-            if (isPending && isOwner) {
-                statusMessage = `<div class="info-box" style="border-color:var(--orange);color:var(--orange);"><i class="fas fa-clock"></i> Your book is pending admin approval. You'll be notified once it's reviewed.</div>`;
-            } else if (isRejected && isOwner) {
-                statusMessage = `<div class="info-box" style="border-color:var(--danger);color:var(--danger);"><i class="fas fa-exclamation-circle"></i> Your book was not approved: ${escapeHtml(book.rejectionReason || 'No reason provided')}</div>`;
+            // Show earnings for owner
+            let earningsHtml = '';
+            if (isOwner && book.totalEarnings > 0) {
+                earningsHtml = `
+                    <div style="margin-top:.75rem;padding:.5rem .75rem;background:rgba(212,175,55,.06);border:1px solid rgba(212,175,55,.15);border-radius:var(--radius-sm);">
+                        <span class="book-earnings-badge">💰 Total Earnings: ${fmtMoneyAPI(book.totalEarnings)}</span>
+                        <span style="font-size:.7rem;color:var(--text3);margin-left:.5rem;">· ${book.salesCount || 0} sales</span>
+                    </div>
+                `;
             }
 
-            const premiumBadge = isPremiumBook ?
-                `<span class="book-premium-badge" style="font-size:.8rem;padding:.2rem .8rem;"><i class="fas fa-crown"></i> Premium Book</span>` :
-                '';
+            let statusBadgeHtml = '';
+            if (book.approvalStatus === 'pending') {
+                statusBadgeHtml = `<span class="badge badge-orange" style="font-size:.7rem;">⏳ Pending Admin Approval</span>`;
+            } else if (book.approvalStatus === 'rejected') {
+                statusBadgeHtml =
+                    `<span class="badge badge-danger" style="font-size:.7rem;">❌ Rejected${book.rejectionReason ? `: ${escapeHtml(book.rejectionReason)}` : ''}</span>`;
+            } else if (book.approvalStatus === 'approved') {
+                statusBadgeHtml = `<span class="badge badge-success" style="font-size:.7rem;">✅ Approved</span>`;
+            }
+
+            let premiumLockHtml = '';
+            if (isPremiumBook && !S.isPremium && !isOwner) {
+                premiumLockHtml = `
+                    <div style="margin:.75rem 0;padding:.75rem;background:rgba(212,175,55,.06);border:1px solid rgba(212,175,55,.2);border-radius:var(--radius-sm);text-align:center;">
+                        <i class="fas fa-crown" style="font-size:1.5rem;color:var(--gold);"></i>
+                        <p style="margin:.3rem 0;font-size:.85rem;font-weight:600;">This is a Premium Book</p>
+                        <p style="font-size:.78rem;color:var(--text3);">Only Premium members can view and download this book.</p>
+                        <button class="btn btn-gold btn-sm" onclick="openModal('premiumModal')">Upgrade to Premium</button>
+                    </div>
+                `;
+            }
 
             container.innerHTML = `
                 <div class="card card-p">
                     <div style="display:flex;flex-wrap:wrap;gap:1.5rem;align-items:flex-start;">
                         <div style="flex:0 0 200px;">
-                            <div style="background:linear-gradient(135deg,var(--card2),var(--card3));border-radius:var(--radius);padding:1rem;text-align:center;position:relative;">
+                            <div style="background:linear-gradient(135deg,var(--card2),var(--card3));border-radius:var(--radius);padding:1rem;text-align:center;">
                                 ${book.coverImage ? `<img src="${book.coverImage}" alt="${escapeHtml(book.title)}" style="width:100%;border-radius:var(--radius-sm);">` : '<div style="font-size:5rem;padding:1rem 0;">📖</div>'}
-                                ${isPremiumBook ? `<div style="position:absolute;top:8px;right:8px;"><span class="badge badge-premium"><i class="fas fa-crown"></i> Premium</span></div>` : ''}
                             </div>
                         </div>
                         <div style="flex:1;min-width:200px;">
-                            <h2 style="margin-bottom:.25rem;">${escapeHtml(book.title)} ${premiumBadge}</h2>
+                            <div style="display:flex;flex-wrap:wrap;gap:.5rem;align-items:center;">
+                                <h2 style="margin-bottom:.25rem;">${escapeHtml(book.title)}</h2>
+                                ${statusBadgeHtml}
+                                ${isPremiumBook ? '<span class="badge badge-premium-book"><i class="fas fa-crown"></i> Premium</span>' : ''}
+                            </div>
                             <p style="color:var(--text3);font-size:.9rem;">By ${escapeHtml(book.author || 'Unknown')}</p>
                             <div style="font-size:1.2rem;font-weight:800;color:var(--lime);margin:.5rem 0;">${book.price === 0 ? 'Free' : fmtMoneyAPI(book.price)}</div>
                             <p style="color:var(--text2);line-height:1.7;margin:.75rem 0;">${escapeHtml(book.description || 'No description available.')}</p>
                             <div style="display:flex;gap:.75rem;flex-wrap:wrap;margin:.75rem 0;">
                                 <span class="badge badge-dark">📥 ${book.downloads || 0} downloads</span>
                                 <span class="badge badge-dark">👁️ ${book.views || 0} views</span>
-                                <span class="badge ${book.approvalStatus === 'approved' ? 'badge-success' : 'badge-orange'}">${book.approvalStatus || 'pending'}</span>
                             </div>
-                            ${statusMessage}
-                            ${canDownload ? `<div><button class="book-download-btn" onclick="downloadBook('${book._id}')"><i class="fas fa-download"></i> Download Now</button><div id="bookDownloadProgress-${book._id}" class="book-download-progress"><div class="prog"><div class="prog-fill pf-primary" id="bookProgBar-${book._id}" style="width:0%"></div></div><div class="prog-label" id="bookProgLabel-${book._id}">Starting download...</div></div></div>` : book.price > 0 && !isPurchased ? `<div><button class="book-purchase-btn" onclick="openBuyBook('${book._id}')"><i class="fas fa-shopping-cart"></i> Purchase — ${fmtMoneyAPI(book.price)}</button><p style="font-size:.75rem;color:var(--text3);margin-top:.5rem;">Purchase this book to download the PDF.</p></div>` : book.isPremium && !S.isPremium ? `<div><button class="btn btn-gold" onclick="openModal('premiumModal')"><i class="fas fa-crown"></i> Upgrade to Premium to Access</button></div>` : ''}
+                            ${earningsHtml}
+                            ${premiumLockHtml}
+                            ${canDownload && !premiumLockHtml ? `<div><button class="book-download-btn ${book.price > 0 ? 'paid' : ''}" onclick="downloadBook('${book._id}')"><i class="fas fa-download"></i> Download Now</button><div id="bookDownloadProgress-${book._id}" class="book-download-progress"><div class="prog"><div class="prog-fill pf-primary" id="bookProgBar-${book._id}" style="width:0%"></div></div><div class="prog-label" id="bookProgLabel-${book._id}">Starting download...</div></div></div>` : ''}
+                            ${!canDownload && !premiumLockHtml ? `<div><button class="book-purchase-btn" onclick="openBuyBook('${book._id}')"><i class="fas fa-shopping-cart"></i> Purchase — ${fmtMoneyAPI(book.price)}</button><p style="font-size:.75rem;color:var(--text3);margin-top:.5rem;">Purchase this book to download the PDF.</p></div>` : ''}
+                            ${isOwner && book.approvalStatus === 'pending' ? `<div style="margin-top:.5rem;font-size:.78rem;color:var(--orange);"><i class="fas fa-clock"></i> This book is pending admin approval. You'll be notified when it's reviewed.</div>` : ''}
                             ${affiliateHtml}
                             ${adHtml}
                         </div>
@@ -9997,18 +9811,11 @@
                 goPage('login'); return; }
             const book = S.currentBook || S.books.find(b => b._id === bookId);
             if (!book) { toast('Book not found', 'error'); return; }
-            // Check premium access
-            if (book.isPremium && !S.isPremium && !S.user?.roles?.includes('admin')) {
-                toast('👑 This book is for Premium users only.', 'warning');
-                openModal('premiumModal');
-                return;
-            }
-            if (book.approvalStatus !== 'approved') {
-                toast('This book is not yet available for download.', 'warning');
-                return;
-            }
+            if (book.isPremium && !S.isPremium) { toast('This is a Premium book. Upgrade to access.', 'warning');
+                openModal('premiumModal'); return; }
             if (book.price > 0 && !book.isPurchased) { toast('Please purchase this book first.', 'warning');
                 openBuyBook(bookId); return; }
+            if (book.approvalStatus !== 'approved') { toast('This book is not yet available for download.', 'warning'); return; }
             if (!book.fileUrl) { toast('No file available for this book.', 'error'); return; }
 
             const progressContainer = document.getElementById(`bookDownloadProgress-${bookId}`);
@@ -10137,10 +9944,10 @@
             const author = document.getElementById('bookUploadAuthor').value.trim();
             const description = document.getElementById('bookUploadDesc').value.trim();
             const price = parseFloat(document.getElementById('bookUploadPrice').value) || 0;
+            const isPremium = document.getElementById('bookUploadIsPremium').value === 'true';
             const coverImage = document.getElementById('bookUploadCover').value.trim();
             const fileUrl = document.getElementById('bookUploadFile').value.trim();
             const affiliatePercent = parseFloat(document.getElementById('bookUploadAffiliate').value) || 0;
-            const isPremium = confirm('Mark this book as Premium-only? (Premium users only)') || false;
 
             if (!title) { toast('Please enter a title', 'error'); return; }
             if (!author) { toast('Please enter an author', 'error'); return; }
@@ -10151,7 +9958,7 @@
                 const res = await apiCall('/books', {
                     method: 'POST',
                     body: { title, author, description, price, coverImage, fileUrl, affiliatePercent, isPremium,
-                        approvalStatus: 'pending' }
+                        isPublished: true, approvalStatus: 'pending' }
                 });
 
                 if (res.success) {
@@ -10180,6 +9987,7 @@
             document.getElementById('bookUploadAuthor').value = '';
             document.getElementById('bookUploadDesc').value = '';
             document.getElementById('bookUploadPrice').value = '0';
+            document.getElementById('bookUploadIsPremium').value = 'false';
             document.getElementById('bookUploadCover').value = '';
             document.getElementById('bookUploadFile').value = '';
             document.getElementById('bookUploadAffiliate').value = '0';
@@ -10187,15 +9995,99 @@
             document.getElementById('bookUploadFilePreview').style.display = 'none';
         }
 
-        // ─── ADMIN BOOKS ──────────────────────────────────────────────
+        // ─── ADMIN PENDING BOOKS ──────────────────────────────────────
+        async function loadPendingBooks() {
+            try {
+                const res = await apiCall('/admin/books/pending');
+                S.pendingBooks = res.data || [];
+                renderPendingBooks(S.pendingBooks);
+            } catch (err) {
+                const container = document.getElementById('adminPendingBooksContainer');
+                if (container) container.innerHTML = '<p style="color:var(--danger)">Failed to load pending books: ' + err
+                    .message + '</p>';
+            }
+        }
+
+        function renderPendingBooks(books) {
+            const container = document.getElementById('adminPendingBooksContainer');
+            if (!container) return;
+            if (!books || !books.length) {
+                container.innerHTML = '<div class="empty-state"><p>No pending book approvals.</p></div>';
+                return;
+            }
+            container.innerHTML = books.map(book => `
+                <div class="admin-book-item" style="border-color:var(--orange);">
+                    <div class="book-info">
+                        <strong>${escapeHtml(book.title)}</strong>
+                        <span class="badge badge-orange" style="font-size:.55rem">⏳ Pending</span>
+                        <span class="badge ${book.isPremium ? 'badge-premium-book' : 'badge-dark'}" style="font-size:.55rem">${book.isPremium ? 'Premium' : 'Free'}</span>
+                        <div class="meta">By ${escapeHtml(book.author || 'Unknown')} · ${fmtMoneyAPI(book.price)} · 📥 ${book.downloads || 0} · 👁️ ${book.views || 0}</div>
+                        <div class="meta" style="font-size:.65rem;color:var(--text3);">Uploaded by: ${escapeHtml(book.uploadedBy?.firstName || book.author || 'Unknown')} on ${new Date(book.createdAt).toLocaleDateString()}</div>
+                    </div>
+                    <div class="book-actions">
+                        <button class="btn btn-success btn-sm" onclick="approvePendingBook('${book._id}')"><i class="fas fa-check"></i> Approve</button>
+                        <button class="btn btn-danger btn-sm" onclick="rejectPendingBook('${book._id}')"><i class="fas fa-times"></i> Reject</button>
+                        <button class="btn btn-ghost btn-sm" onclick="viewPendingBookDetail('${book._id}')"><i class="fas fa-eye"></i></button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        async function approvePendingBook(bookId) {
+            showLoading('Approving book...');
+            try {
+                const res = await apiCall(`/admin/books/${bookId}/approve`, { method: 'POST' });
+                toast('✅ Book approved! The author has been notified.', 'success');
+                loadPendingBooks();
+                loadAdminBooks();
+                loadBooks();
+            } catch (err) { toast('Failed to approve: ' + err.message, 'error'); } finally { hideLoading(); }
+        }
+
+        async function rejectPendingBook(bookId) {
+            const reason = prompt('Rejection reason:');
+            if (reason === null) return;
+            showLoading('Rejecting book...');
+            try {
+                const res = await apiCall(`/admin/books/${bookId}/reject`, { method: 'POST', body: { reason: reason ||
+                            'Not specified' } });
+                toast('❌ Book rejected. Author has been notified.', 'info');
+                loadPendingBooks();
+                loadAdminBooks();
+                loadBooks();
+            } catch (err) { toast('Failed to reject: ' + err.message, 'error'); } finally { hideLoading(); }
+        }
+
+        async function viewPendingBookDetail(bookId) {
+            try {
+                const res = await apiCall(`${BOOKS_API}/${bookId}`);
+                const book = res.data;
+                const content = document.getElementById('userDetailsContent');
+                if (!content) return;
+                content.innerHTML = `
+                    <div class="row">
+                        <div class="col-12"><h5>${escapeHtml(book.title)}</h5><p style="color:var(--text3);">By ${escapeHtml(book.author)}</p></div>
+                        <div class="col-6"><strong>Price:</strong> ${fmtMoneyAPI(book.price)}</div>
+                        <div class="col-6"><strong>Premium:</strong> ${book.isPremium ? 'Yes 👑' : 'No'}</div>
+                        <div class="col-12"><strong>Description:</strong> <p style="font-size:.85rem;color:var(--text2);">${escapeHtml(book.description || 'No description')}</p></div>
+                        <div class="col-12"><strong>Cover:</strong> ${book.coverImage ? `<img src="${book.coverImage}" style="max-width:200px;border-radius:var(--radius-sm);margin-top:.3rem;">` : 'No cover'}</div>
+                        <div class="col-12"><strong>PDF URL:</strong> <a href="${book.fileUrl}" target="_blank" style="color:var(--primary);word-break:break-all;">${book.fileUrl}</a></div>
+                        <div class="col-12"><strong>Affiliate %:</strong> ${book.affiliatePercent || 0}%</div>
+                        <div class="col-12"><strong>Uploaded:</strong> ${new Date(book.createdAt).toLocaleString()}</div>
+                        <div class="col-12"><strong>Views:</strong> ${book.views || 0} · <strong>Downloads:</strong> ${book.downloads || 0}</div>
+                    </div>
+                `;
+                document.querySelector('#userDetailsModal .modal-hd h5').textContent = '📖 Book Details';
+                openModal('userDetailsModal');
+            } catch (err) { toast('Failed to load book: ' + err.message, 'error'); }
+        }
+
+        // ─── ADMIN BOOKS (Existing) ──────────────────────────────────
         async function loadAdminBooks() {
             try {
                 const res = await apiCall('/admin/books');
                 const books = res.data || [];
                 renderAdminBooks(books);
-                // Also load pending books separately for the pending tab
-                const pendingRes = await apiCall('/admin/books?status=pending');
-                S.pendingBooks = pendingRes.data || [];
             } catch (err) {
                 const container = document.getElementById('adminBooksContainer');
                 if (container) container.innerHTML = '<p style="color:var(--danger)">Failed to load books: ' + err.message +
@@ -10206,67 +10098,27 @@
         function renderAdminBooks(books) {
             const container = document.getElementById('adminBooksContainer');
             if (!container) return;
-            // Filter based on adminBookFilter
-            let filtered = books;
-            if (S.bookApprovalFilter === 'pending') {
-                filtered = books.filter(b => b.approvalStatus === 'pending');
-            } else if (S.bookApprovalFilter === 'approved') {
-                filtered = books.filter(b => b.approvalStatus === 'approved');
-            } else if (S.bookApprovalFilter === 'rejected') {
-                filtered = books.filter(b => b.approvalStatus === 'rejected');
-            }
-
-            if (!filtered || !filtered.length) {
-                container.innerHTML = '<div class="empty-state"><p>No books found for this filter.</p></div>';
+            if (!books || !books.length) {
+                container.innerHTML = '<div class="empty-state"><p>No books added yet.</p></div>';
                 return;
             }
-            container.innerHTML = filtered.map(book => {
-                const isPremium = book.isPremium ? '👑 Premium' : '';
-                return `
-                    <div class="admin-book-item">
-                        <div class="book-info">
-                            <strong>${escapeHtml(book.title)}</strong>
-                            <span class="badge ${book.isPublished !== false ? 'badge-success' : 'badge-dark'}" style="font-size:.55rem">${book.isPublished !== false ? 'Published' : 'Draft'}</span>
-                            <span class="badge ${book.approvalStatus === 'pending' ? 'badge-orange' : book.approvalStatus === 'approved' ? 'badge-success' : 'badge-danger'}" style="font-size:.55rem">${book.approvalStatus || 'pending'}</span>
-                            ${isPremium ? `<span class="badge badge-premium" style="font-size:.55rem">${isPremium}</span>` : ''}
-                            <div class="meta">By ${escapeHtml(book.author || 'Unknown')} · ${fmtMoneyAPI(book.price)} · 📥 ${book.downloads || 0} · 👁️ ${book.views || 0}</div>
-                            ${book.rejectionReason ? `<div style="font-size:.7rem;color:var(--danger);">Rejected: ${escapeHtml(book.rejectionReason)}</div>` : ''}
-                        </div>
-                        <div class="book-actions">
-                            ${book.approvalStatus === 'pending' ? `<button class="btn btn-success btn-sm" onclick="approveBook('${book._id}')"><i class="fas fa-check"></i> Approve</button><button class="btn btn-danger btn-sm" onclick="rejectBook('${book._id}')"><i class="fas fa-times"></i> Reject</button>` : ''}
-                            <button class="btn btn-ghost btn-sm" onclick="editBook('${book._id}')"><i class="fas fa-edit"></i></button>
-                            <button class="btn btn-danger btn-sm" onclick="deleteBookAdmin('${book._id}')"><i class="fas fa-trash"></i></button>
-                        </div>
+            container.innerHTML = books.map(book => `
+                <div class="admin-book-item">
+                    <div class="book-info">
+                        <strong>${escapeHtml(book.title)}</strong>
+                        <span class="badge ${book.isPublished !== false ? 'badge-success' : 'badge-dark'}" style="font-size:.55rem">${book.isPublished !== false ? 'Published' : 'Draft'}</span>
+                        <span class="badge ${book.approvalStatus === 'pending' ? 'badge-orange' : book.approvalStatus === 'approved' ? 'badge-success' : 'badge-dark'}" style="font-size:.55rem">${book.approvalStatus || 'pending'}</span>
+                        <span class="badge ${book.isPremium ? 'badge-premium-book' : 'badge-dark'}" style="font-size:.55rem">${book.isPremium ? '👑 Premium' : 'Free'}</span>
+                        <div class="meta">By ${escapeHtml(book.author || 'Unknown')} · ${fmtMoneyAPI(book.price)} · 📥 ${book.downloads || 0} · 👁️ ${book.views || 0}</div>
+                        <div class="meta" style="font-size:.65rem;color:var(--text3);">Uploaded by: ${escapeHtml(book.uploadedBy?.firstName || book.author || 'Unknown')}</div>
                     </div>
-                `;
-            }).join('');
-        }
-
-        async function approveBook(bookId) {
-            try {
-                const res = await apiCall(`/admin/books/${bookId}/approve`, { method: 'POST' });
-                toast('Book approved!', 'success');
-                loadAdminBooks();
-                loadBooks();
-            } catch (err) { toast('Failed to approve: ' + err.message, 'error'); }
-        }
-
-        async function rejectBook(bookId) {
-            const reason = prompt('Rejection reason:');
-            try {
-                const res = await apiCall(`/admin/books/${bookId}/reject`, { method: 'POST', body: { reason: reason ||
-                            'Not specified' } });
-                toast('Book rejected', 'info');
-                loadAdminBooks();
-                loadBooks();
-            } catch (err) { toast('Failed to reject: ' + err.message, 'error'); }
-        }
-
-        function filterAdminBooks(filter, el) {
-            S.bookApprovalFilter = filter || 'all';
-            document.querySelectorAll('#adminBooksContainer .fpill')?.forEach(p => p.classList.remove('active'));
-            if (el) el.classList.add('active');
-            loadAdminBooks();
+                    <div class="book-actions">
+                        ${book.approvalStatus === 'pending' ? `<button class="btn btn-success btn-sm" onclick="approvePendingBook('${book._id}')"><i class="fas fa-check"></i> Approve</button><button class="btn btn-danger btn-sm" onclick="rejectPendingBook('${book._id}')"><i class="fas fa-times"></i> Reject</button>` : ''}
+                        <button class="btn btn-ghost btn-sm" onclick="editBook('${book._id}')"><i class="fas fa-edit"></i></button>
+                        <button class="btn btn-danger btn-sm" onclick="deleteBookAdmin('${book._id}')"><i class="fas fa-trash"></i></button>
+                    </div>
+                </div>
+            `).join('');
         }
 
         async function editBook(bookId) {
@@ -10278,44 +10130,9 @@
             try { await apiCall(`/admin/books/${bookId}`, { method: 'DELETE' });
                 toast('Book deleted', 'success');
                 loadAdminBooks();
-                loadBooks(); } catch (err) { toast('Failed to delete: ' + err.message, 'error'); }
-        }
-
-        // ─── ADMIN PENDING BOOKS TAB ──────────────────────────────────
-        async function loadPendingBooks() {
-            try {
-                const res = await apiCall('/admin/books?status=pending');
-                S.pendingBooks = res.data || [];
-                const container = document.getElementById('pendingBooksContainer');
-                if (!container) return;
-                if (!S.pendingBooks.length) {
-                    container.innerHTML = '<div class="empty-state"><p>No pending books</p></div>';
-                    return;
-                }
-                container.innerHTML = S.pendingBooks.map(book => `
-                    <div class="admin-pending-book-card">
-                        <div class="book-info">
-                            <strong>${escapeHtml(book.title)}</strong>
-                            <div class="meta">
-                                <span>By ${escapeHtml(book.author || 'Unknown')}</span>
-                                <span>💰 ${fmtMoneyAPI(book.price)}</span>
-                                <span>📥 ${book.downloads || 0} downloads</span>
-                                ${book.isPremium ? '<span class="badge badge-premium" style="font-size:.55rem">👑 Premium</span>' : ''}
-                                <span><span class="badge badge-cyan" style="font-size:.55rem">Submitted ${new Date(book.createdAt).toLocaleDateString()}</span></span>
-                            </div>
-                            <div style="font-size:.78rem;color:var(--text2);margin-top:.3rem;">${escapeHtml(book.description?.substring(0, 100) || '')}${(book.description?.length || 0) > 100 ? '...' : ''}</div>
-                        </div>
-                        <div class="book-actions">
-                            <button class="btn btn-success btn-sm" onclick="approveBook('${book._id}')"><i class="fas fa-check"></i> Approve</button>
-                            <button class="btn btn-danger btn-sm" onclick="rejectBook('${book._id}')"><i class="fas fa-times"></i> Reject</button>
-                            <button class="btn btn-ghost btn-sm" onclick="openBookDetail('${book._id}')"><i class="fas fa-eye"></i> Preview</button>
-                        </div>
-                    </div>
-                `).join('');
-            } catch (err) {
-                const container = document.getElementById('pendingBooksContainer');
-                if (container) container.innerHTML = '<p style="color:var(--danger)">Failed to load pending books</p>';
-            }
+                loadBooks();
+                loadPendingBooks();
+            } catch (err) { toast('Failed to delete: ' + err.message, 'error'); }
         }
 
         // ================================================================
@@ -10435,7 +10252,7 @@
 
         function renderNotifSettings() {
             const items = ['Course Approvals', 'New Affiliate Offers', 'Referral Conversions', 'Q&A Replies',
-                'Admin Announcements'
+                'Admin Announcements', 'Book Approvals'
             ];
             document.getElementById('notifSettingsList').innerHTML = items.map(item =>
                 `<div class="d-flex items-center justify-between p-3" style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-sm);margin-bottom:.3rem"><div style="font-size:.83rem;font-weight:600">${item}</div><input type="checkbox" checked style="accent-color:var(--primary);width:15px;height:15px;cursor:pointer"/></div>`
@@ -10689,7 +10506,7 @@
         }
 
         // ================================================================
-        // ADMIN PANEL – WITH FULL FEATURES (Including Pending Books)
+        // ADMIN PANEL – WITH FULL FEATURES + PENDING BOOKS
         // ================================================================
         function renderAdm(sec) { switchAdm(sec, null); }
 
@@ -10708,13 +10525,15 @@
             switch (sec) {
                 case 'dashboard':
                     content.innerHTML =
-                        '<div class="row"><div class="col-6 col-md-3"><div class="stat-card"><div class="sv" id="admTotalUsers">—</div><div class="sl">Total Users</div></div></div><div class="col-6 col-md-3"><div class="stat-card"><div class="sv" id="admTotalCourses">—</div><div class="sl">Courses</div></div></div><div class="col-6 col-md-3"><div class="stat-card"><div class="sv" id="admPendingW">—</div><div class="sl">Pending Withdrawals</div></div></div></div>';
+                        '<div class="row"><div class="col-6 col-md-3"><div class="stat-card"><div class="sv" id="admTotalUsers">—</div><div class="sl">Total Users</div></div></div><div class="col-6 col-md-3"><div class="stat-card"><div class="sv" id="admTotalCourses">—</div><div class="sl">Courses</div></div></div><div class="col-6 col-md-3"><div class="stat-card"><div class="sv" id="admPendingW">—</div><div class="sl">Pending Withdrawals</div></div></div><div class="col-6 col-md-3"><div class="stat-card"><div class="sv" id="admPendingBooks">—</div><div class="sl">Pending Books</div></div></div></div>';
                     try {
                         const res = await apiCall('/admin/dashboard');
                         const d = res.data;
                         document.getElementById('admTotalUsers').textContent = d.totalUsers || 0;
                         document.getElementById('admTotalCourses').textContent = d.totalCourses || 0;
                         document.getElementById('admPendingW').textContent = d.pendingWithdrawals || 0;
+                        const pendingBooks = await apiCall('/admin/books/pending');
+                        document.getElementById('admPendingBooks').textContent = (pendingBooks.data || []).length || 0;
                     } catch (e) { content.innerHTML += '<p style="color:var(--danger)">Failed to load stats</p>'; }
                     break;
                 case 'users':
@@ -10842,7 +10661,7 @@
                     break;
                 case 'books':
                     content.innerHTML = `
-                        <div class="admin-section-header"><h6>📚 Manage Books</h6><div style="display:flex;gap:.5rem;flex-wrap:wrap;"><button class="fpill active" onclick="filterAdminBooks('all',this)">All</button><button class="fpill" onclick="filterAdminBooks('pending',this)">⏳ Pending</button><button class="fpill" onclick="filterAdminBooks('approved',this)">✅ Approved</button><button class="fpill" onclick="filterAdminBooks('rejected',this)">❌ Rejected</button></div><button class="btn btn-primary btn-sm" onclick="openBookForm()"><i class="fas fa-plus"></i> Add Book</button></div>
+                        <div class="admin-section-header"><h6>📚 Manage Books</h6><button class="btn btn-primary btn-sm" onclick="openBookForm()"><i class="fas fa-plus"></i> Add Book</button></div>
                         <div id="adminBookFormContainer" style="display:none;" class="admin-book-form card card-p">
                             <div class="d-flex items-center justify-between mb-3"><h5 id="bookFormTitle">📚 Add New Book</h5><button class="btn-icon-sm" onclick="closeBookForm()"><i class="fas fa-times"></i></button></div>
                             <input type="hidden" id="editingBookId" />
@@ -10852,12 +10671,19 @@
                                 <div class="col-12 col-md-6"><div class="form-group"><label class="flabel">Upload Cover Image</label><div class="upload-zone" style="padding:1rem"><input type="file" id="bookCoverFile" accept="image/*" onchange="uploadBookCover(this)" /><div class="upload-icon"><i class="fas fa-cloud-upload-alt"></i></div><div style="font-size:.8rem;color:var(--text2)">Click or drop image (PNG, JPG, WebP)</div></div><div id="bookCoverPreview" class="upload-preview"><img id="bookCoverPreviewImg" /><div class="upload-preview-label">✅ Image uploaded</div></div><input type="hidden" id="bookCoverImage" /><div id="bookCoverProgress" class="book-upload-progress" style="display:none;">Uploading... 0%</div></div>
                                 <div class="col-12 col-md-6"><div class="form-group"><label class="flabel">Book PDF File *</label><div class="upload-zone" style="padding:1rem"><input type="file" id="bookPdfFile" accept="application/pdf" onchange="uploadBookPdf(this)" /><div class="upload-icon"><i class="fas fa-file-pdf"></i></div><div style="font-size:.8rem;color:var(--text2)">Upload PDF file</div></div><input type="hidden" id="bookFileUrl" /><div id="bookPdfPreview" class="upload-preview"><div class="upload-preview-label">✅ PDF uploaded</div></div><div id="bookPdfProgress" class="book-upload-progress" style="display:none;">Uploading... 0%</div></div>
                             </div>
-                            <div class="row"><div class="col-12 col-md-4"><div class="form-group"><label class="flabel">Price (₦)</label><input type="number" class="finput" id="bookPrice" placeholder="0 for free" min="0" value="0" /></div></div><div class="col-12 col-md-4"><div class="form-group"><label class="flabel">Published</label><input type="checkbox" id="bookIsPublished" checked style="accent-color:var(--primary);width:16px;height:16px;margin-top:12px;" /></div></div></div>
+                            <div class="row"><div class="col-12 col-md-4"><div class="form-group"><label class="flabel">Price (₦)</label><input type="number" class="finput" id="bookPrice" placeholder="0 for free" min="0" value="0" /></div></div><div class="col-12 col-md-4"><div class="form-group"><label class="flabel">Is Premium?</label><select class="finput" id="bookIsPremium"><option value="false">Free — All users</option><option value="true">Premium — Only premium users</option></select></div></div><div class="col-12 col-md-4"><div class="form-group"><label class="flabel">Published</label><input type="checkbox" id="bookIsPublished" checked style="accent-color:var(--primary);width:16px;height:16px;margin-top:12px;" /></div></div></div>
                             <div class="d-flex gap-2 mt-3"><button class="btn btn-primary" onclick="saveBook()"><i class="fas fa-save"></i> <span id="bookSaveBtnText">Add Book</span></button><button class="btn btn-ghost" onclick="closeBookForm()">Cancel</button></div>
                         </div>
                         <div id="adminBooksContainer"><p style="color:var(--text3)">Loading books...</p></div>
                     `;
                     await loadAdminBooks();
+                    break;
+                case 'pending-books':
+                    content.innerHTML = `
+                        <div class="admin-section-header"><h6 style="color:var(--orange)">⏳ Pending Book Approvals</h6><button class="btn btn-ghost btn-sm" onclick="loadPendingBooks()"><i class="fas fa-sync-alt"></i> Refresh</button></div>
+                        <div id="adminPendingBooksContainer"><p style="color:var(--text3)">Loading pending books...</p></div>
+                    `;
+                    await loadPendingBooks();
                     break;
                 case 'social-earnings':
                     content.innerHTML = `
@@ -11437,188 +11263,6 @@
             } catch (err) { toast('Failed to load user details: ' + err.message, 'error'); }
         }
 
-        // ─── ADMIN BOOK FORM ────────────────────────────────────────────
-        let editingBookId = null;
-
-        function openBookForm(bookId = null) {
-            const container = document.getElementById('adminBookFormContainer');
-            if (!container) return;
-            if (bookId) {
-                editingBookId = bookId;
-                document.getElementById('bookFormTitle').textContent = '✏️ Edit Book';
-                document.getElementById('bookSaveBtnText').textContent = 'Update Book';
-                loadBookData(bookId);
-            } else {
-                editingBookId = null;
-                document.getElementById('bookFormTitle').textContent = '📚 Add New Book';
-                document.getElementById('bookSaveBtnText').textContent = 'Add Book';
-                resetBookForm();
-            }
-            container.style.display = 'block';
-            container.scrollIntoView({ behavior: 'smooth' });
-        }
-
-        function closeBookForm() {
-            document.getElementById('adminBookFormContainer').style.display = 'none';
-            resetBookForm();
-        }
-
-        function resetBookForm() {
-            document.getElementById('editingBookId').value = '';
-            document.getElementById('bookTitle').value = '';
-            document.getElementById('bookAuthor').value = '';
-            document.getElementById('bookDescription').value = '';
-            document.getElementById('bookPrice').value = '0';
-            document.getElementById('bookIsPublished').checked = true;
-            document.getElementById('bookCoverImage').value = '';
-            document.getElementById('bookFileUrl').value = '';
-            document.getElementById('bookCoverPreview').classList.remove('visible');
-            document.getElementById('bookPdfPreview').classList.remove('visible');
-            document.getElementById('bookCoverFile').value = '';
-            document.getElementById('bookPdfFile').value = '';
-        }
-
-        async function loadBookData(bookId) {
-            try {
-                const res = await apiCall(`/books/${bookId}`);
-                const book = res.data;
-                document.getElementById('editingBookId').value = book._id;
-                document.getElementById('bookTitle').value = book.title || '';
-                document.getElementById('bookAuthor').value = book.author || '';
-                document.getElementById('bookDescription').value = book.description || '';
-                document.getElementById('bookPrice').value = book.price || 0;
-                document.getElementById('bookIsPublished').checked = book.isPublished !== false;
-                if (book.coverImage) {
-                    document.getElementById('bookCoverImage').value = book.coverImage;
-                    document.getElementById('bookCoverPreview').classList.add('visible');
-                    document.getElementById('bookCoverPreviewImg').src = book.coverImage;
-                }
-                if (book.fileUrl) {
-                    document.getElementById('bookFileUrl').value = book.fileUrl;
-                    document.getElementById('bookPdfPreview').classList.add('visible');
-                }
-            } catch (err) { toast('Failed to load book: ' + err.message, 'error'); }
-        }
-
-        async function saveBook() {
-            const title = document.getElementById('bookTitle').value.trim();
-            const author = document.getElementById('bookAuthor').value.trim();
-            const description = document.getElementById('bookDescription').value.trim();
-            const price = parseFloat(document.getElementById('bookPrice').value) || 0;
-            const isPublished = document.getElementById('bookIsPublished').checked;
-            const coverImage = document.getElementById('bookCoverImage').value.trim();
-            const fileUrl = document.getElementById('bookFileUrl').value.trim();
-            const editId = document.getElementById('editingBookId').value;
-
-            if (!title) { toast('Please enter a title', 'error'); return; }
-            if (!author) { toast('Please enter an author', 'error'); return; }
-            if (!fileUrl) { toast('Please provide a PDF file', 'error'); return; }
-
-            const payload = { title, author, description, price, coverImage, fileUrl, isPublished, approvalStatus: 'pending' };
-            showLoading('Saving book...');
-            try {
-                let res;
-                if (editId) {
-                    res = await apiCall(`/admin/books/${editId}`, { method: 'PUT', body: payload });
-                    toast('✅ Book updated!', 'success');
-                } else {
-                    res = await apiCall('/admin/books', { method: 'POST', body: payload });
-                    toast('✅ Book created!', 'success');
-                }
-                closeBookForm();
-                loadAdminBooks();
-                loadBooks();
-            } catch (err) { toast('Failed to save book: ' + err.message, 'error'); } finally { hideLoading(); }
-        }
-
-        async function uploadBookCover(input) {
-            const file = input.files[0];
-            if (!file) return;
-            const formData = new FormData();
-            formData.append('image', file);
-            const progressEl = document.getElementById('bookCoverProgress');
-            if (progressEl) progressEl.style.display = 'block';
-            try {
-                const token = localStorage.getItem('cx_accessToken');
-                const xhr = new XMLHttpRequest();
-                xhr.upload.onprogress = (e) => {
-                    if (e.lengthComputable && progressEl) {
-                        const pct = Math.round((e.loaded / e.total) * 100);
-                        progressEl.textContent = `Uploading cover... ${pct}%`;
-                    }
-                };
-                xhr.onload = function() {
-                    try {
-                        const data = JSON.parse(xhr.responseText);
-                        if (data.success) {
-                            document.getElementById('bookCoverImage').value = data.data.url;
-                            const preview = document.getElementById('bookCoverPreview');
-                            preview.classList.add('visible');
-                            document.getElementById('bookCoverPreviewImg').src = data.data.url;
-                            if (progressEl) { progressEl.style.display = 'none';
-                                progressEl.textContent = ''; }
-                            toast('✅ Cover uploaded!', 'success');
-                        } else { toast('Upload failed: ' + data.message, 'error'); if (progressEl) { progressEl.style
-                                .display = 'none';
-                                progressEl.textContent = ''; } }
-                    } catch (e) { toast('Upload error', 'error'); if (progressEl) { progressEl.style.display = 'none';
-                            progressEl.textContent = ''; } }
-                };
-                xhr.onerror = function() { toast('Network error', 'error'); if (progressEl) { progressEl.style.display =
-                        'none';
-                        progressEl.textContent = ''; } };
-                xhr.open('POST', `${API_BASE}/admin/upload`);
-                xhr.setRequestHeader('Authorization', `Bearer ${token}`);
-                xhr.send(formData);
-            } catch (err) { toast('Upload error: ' + err.message, 'error'); if (progressEl) { progressEl.style.display =
-                        'none';
-                    progressEl.textContent = ''; } }
-        }
-
-        async function uploadBookPdf(input) {
-            const file = input.files[0];
-            if (!file) return;
-            if (file.type !== 'application/pdf') { toast('Please upload a PDF file', 'error');
-                input.value = ''; return; }
-            const formData = new FormData();
-            formData.append('file', file);
-            const progressEl = document.getElementById('bookPdfProgress');
-            if (progressEl) progressEl.style.display = 'block';
-            try {
-                const token = localStorage.getItem('cx_accessToken');
-                const xhr = new XMLHttpRequest();
-                xhr.upload.onprogress = (e) => {
-                    if (e.lengthComputable && progressEl) {
-                        const pct = Math.round((e.loaded / e.total) * 100);
-                        progressEl.textContent = `Uploading PDF... ${pct}%`;
-                    }
-                };
-                xhr.onload = function() {
-                    try {
-                        const data = JSON.parse(xhr.responseText);
-                        if (data.success) {
-                            document.getElementById('bookFileUrl').value = data.data.url;
-                            document.getElementById('bookPdfPreview').classList.add('visible');
-                            if (progressEl) { progressEl.style.display = 'none';
-                                progressEl.textContent = ''; }
-                            toast('✅ PDF uploaded!', 'success');
-                        } else { toast('Upload failed: ' + data.message, 'error'); if (progressEl) { progressEl.style
-                                .display = 'none';
-                                progressEl.textContent = ''; } }
-                    } catch (e) { toast('Upload error', 'error'); if (progressEl) { progressEl.style.display = 'none';
-                            progressEl.textContent = ''; } }
-                };
-                xhr.onerror = function() { toast('Network error', 'error'); if (progressEl) { progressEl.style.display =
-                        'none';
-                        progressEl.textContent = ''; } };
-                xhr.open('POST', `${API_BASE}/admin/upload`);
-                xhr.setRequestHeader('Authorization', `Bearer ${token}`);
-                xhr.send(formData);
-            } catch (err) { toast('Upload error: ' + err.message, 'error'); if (progressEl) { progressEl.style.display =
-                        'none';
-                    progressEl.textContent = ''; } }
-        }
-
         // ================================================================
         // LANDING PAGE FUNCTIONS
         // ================================================================
@@ -11673,7 +11317,7 @@
                 const list = Array.isArray(data.data) ? data.data : [];
                 S.landingCourses = list;
                 document.getElementById('landingCourseGrid').innerHTML = list.length ? list.map((c, i) =>
-                    `<div style="flex:1;min-width:240px"><div class="l-cc" onclick="goPage('register')"><div class="l-cc-thumb" style="background:linear-gradient(135deg,var(--card2),var(--card3))">${c.thumbnail || c.emoji || '📚'}<div class="l-cc-badge"><span class="badge ${i === 0 ? 'badge-primary' : 'badge-gold'}" style="font-size:.62rem">${i === 0 ? '🔥 Bestseller' : '🌟 Hot'}</span></div></div><div class="l-cc-body"><div class="l-cc-title">${c.title || 'Course'}</div><div class="l-cc-meta"><span class="stars">★★★★★</span><span>${c.rating || 4.9}</span>·<span>${c.totalLessons || 0} lessons</span></div><div class="l-cc-price">${fmtMoneyAPI(c.displayPrice || c.price || 0)}</div></div></div></div>`
+                    `<div style="flex:1;min-width:240px"><div class="l-cc" onclick="goPage('register')"><div class="l-cc-thumb" style="background:linear-gradient(135deg,var(--card2),var(--card3))">${c.thumbnail || c.emoji || '📚'}<div class="l-cc-badge"><span class="badge ${i === 0 ? 'badge-primary' : 'badge-gold'}" style="font-size:.62rem">${i === 0 ? '🔥 Bestseller' : '🌟 Hot'}</span></div></div><div class="l-cc-body"><div class="l-cc-title">${c.title || 'Course'}</div><div class="l-cc-meta"><span class="stars">★★★★★</span><span>${c.rating || 4.9}</span>·<span>${c.totalLessons || 0} lessons</span></div><div class="l-cc-price">${fmtMoneyAPI(c.displayPrice || c.price || 0)}</div></div></div>`
                     ).join('') : '<div class="empty-state"><p>Loading courses...</p></div>';
             } catch (e) { document.getElementById('landingCourseGrid').innerHTML =
                     '<div class="empty-state"><p>Loading courses...</p></div>'; }
@@ -11687,24 +11331,19 @@
                 const container = document.getElementById('landingBooksGrid');
                 if (!container) return;
                 if (!books.length) { container.innerHTML = '<div class="empty-state"><p>Books coming soon</p></div>'; return; }
-                container.innerHTML = books.map(book => {
-                    const isPremium = book.isPremium ? '<span class="book-premium-badge" style="font-size:.6rem;"><i class="fas fa-crown"></i> Premium</span>' :
-                        '';
-                    return `
+                container.innerHTML = books.map(book => `
                     <div style="flex:1;min-width:200px">
-                        <div class="l-cc" onclick="${book.isPremium ? `openModal('premiumModal')` : `goPage('register')`}">
-                            <div class="l-cc-thumb" style="background:linear-gradient(135deg,var(--card2),var(--card3));font-size:2.5rem;position:relative;">${book.coverImage ? `<img src="${book.coverImage}" style="width:100%;height:100%;object-fit:cover;">` : '📖'}
-                                ${book.isPremium ? `<div style="position:absolute;top:8px;right:8px;"><span class="badge badge-premium" style="font-size:.55rem;"><i class="fas fa-crown"></i> Premium</span></div>` : ''}
-                            </div>
+                        <div class="l-cc" onclick="goPage('register')">
+                            <div class="l-cc-thumb" style="background:linear-gradient(135deg,var(--card2),var(--card3));font-size:2.5rem;">${book.coverImage ? `<img src="${book.coverImage}" style="width:100%;height:100%;object-fit:cover;">` : '📖'}</div>
                             <div class="l-cc-body">
-                                <div class="l-cc-title">${escapeHtml(book.title)} ${isPremium}</div>
+                                <div class="l-cc-title">${escapeHtml(book.title)}</div>
                                 <div class="l-cc-meta">By ${escapeHtml(book.author || 'Unknown')}</div>
                                 <div class="l-cc-price">${book.price === 0 ? 'Free' : fmtMoneyAPI(book.price)}</div>
+                                ${book.isPremium ? '<span class="badge badge-premium-book" style="font-size:.6rem;"><i class="fas fa-crown"></i> Premium</span>' : ''}
                             </div>
                         </div>
                     </div>
-                `;
-                }).join('');
+                `).join('');
             } catch (e) { document.getElementById('landingBooksGrid').innerHTML =
                     '<div class="empty-state"><p>Loading books...</p></div>'; }
         }
@@ -12007,6 +11646,154 @@
         }, 30000);
 
         // ================================================================
+        // ADMIN BOOK FORM
+        // ================================================================
+        let editingBookId = null;
+
+        function openBookForm(bookId = null) {
+            const container = document.getElementById('adminBookFormContainer');
+            if (!container) return;
+            if (bookId) {
+                editingBookId = bookId;
+                document.getElementById('bookFormTitle').textContent = '✏️ Edit Book';
+                document.getElementById('bookSaveBtnText').textContent = 'Update Book';
+                loadBookData(bookId);
+            } else {
+                editingBookId = null;
+                document.getElementById('bookFormTitle').textContent = '📚 Add New Book';
+                document.getElementById('bookSaveBtnText').textContent = 'Add Book';
+                resetBookForm();
+            }
+            container.style.display = 'block';
+            container.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function closeBookForm() {
+            document.getElementById('adminBookFormContainer').style.display = 'none';
+            resetBookForm();
+        }
+
+        function resetBookForm() {
+            document.getElementById('editingBookId').value = '';
+            document.getElementById('bookTitle').value = '';
+            document.getElementById('bookAuthor').value = '';
+            document.getElementById('bookDescription').value = '';
+            document.getElementById('bookPrice').value = '0';
+            document.getElementById('bookIsPremium').value = 'false';
+            document.getElementById('bookIsPublished').checked = true;
+            document.getElementById('bookCoverImage').value = '';
+            document.getElementById('bookFileUrl').value = '';
+            document.getElementById('bookCoverPreview').classList.remove('visible');
+            document.getElementById('bookPdfPreview').classList.remove('visible');
+            document.getElementById('bookCoverProgress').style.display = 'none';
+            document.getElementById('bookPdfProgress').style.display = 'none';
+        }
+
+        async function loadBookData(bookId) {
+            try {
+                const res = await apiCall(`/books/${bookId}`);
+                const book = res.data;
+                document.getElementById('editingBookId').value = book._id;
+                document.getElementById('bookTitle').value = book.title || '';
+                document.getElementById('bookAuthor').value = book.author || '';
+                document.getElementById('bookDescription').value = book.description || '';
+                document.getElementById('bookPrice').value = book.price || 0;
+                document.getElementById('bookIsPremium').value = book.isPremium ? 'true' : 'false';
+                document.getElementById('bookIsPublished').checked = book.isPublished !== false;
+                document.getElementById('bookCoverImage').value = book.coverImage || '';
+                document.getElementById('bookFileUrl').value = book.fileUrl || '';
+                if (book.coverImage) {
+                    const preview = document.getElementById('bookCoverPreview');
+                    preview.classList.add('visible');
+                    document.getElementById('bookCoverPreviewImg').src = book.coverImage;
+                }
+                if (book.fileUrl) {
+                    document.getElementById('bookPdfPreview').classList.add('visible');
+                }
+                toast('Book loaded for editing', 'success');
+            } catch (err) { toast('Failed to load book: ' + err.message, 'error'); }
+        }
+
+        async function uploadBookCover(input) {
+            const file = input.files[0];
+            if (!file) return;
+            const formData = new FormData();
+            formData.append('image', file);
+            const progress = document.getElementById('bookCoverProgress');
+            progress.style.display = 'block';
+            showLoading('Uploading cover...');
+            try {
+                const token = localStorage.getItem('cx_accessToken');
+                const res = await fetch(`${API_BASE}/admin/upload`, { method: 'POST', headers: { 'Authorization': `Bearer ${token}` },
+                    body: formData });
+                const data = await res.json();
+                if (data.success) {
+                    document.getElementById('bookCoverImage').value = data.data.url;
+                    const preview = document.getElementById('bookCoverPreview');
+                    preview.classList.add('visible');
+                    document.getElementById('bookCoverPreviewImg').src = data.data.url;
+                    toast('✅ Cover uploaded!', 'success');
+                } else { toast('Upload failed: ' + data.message, 'error'); }
+            } catch (err) { toast('Upload error: ' + err.message, 'error'); } finally { hideLoading();
+                progress.style.display = 'none';
+                input.value = ''; }
+        }
+
+        async function uploadBookPdf(input) {
+            const file = input.files[0];
+            if (!file) return;
+            const formData = new FormData();
+            formData.append('pdf', file);
+            const progress = document.getElementById('bookPdfProgress');
+            progress.style.display = 'block';
+            showLoading('Uploading PDF...');
+            try {
+                const token = localStorage.getItem('cx_accessToken');
+                const res = await fetch(`${API_BASE}/admin/upload-pdf`, { method: 'POST', headers: { 'Authorization': `Bearer ${token}` },
+                    body: formData });
+                const data = await res.json();
+                if (data.success) {
+                    document.getElementById('bookFileUrl').value = data.data.url;
+                    document.getElementById('bookPdfPreview').classList.add('visible');
+                    toast('✅ PDF uploaded!', 'success');
+                } else { toast('Upload failed: ' + data.message, 'error'); }
+            } catch (err) { toast('Upload error: ' + err.message, 'error'); } finally { hideLoading();
+                progress.style.display = 'none';
+                input.value = ''; }
+        }
+
+        async function saveBook() {
+            const title = document.getElementById('bookTitle').value.trim();
+            const author = document.getElementById('bookAuthor').value.trim();
+            const description = document.getElementById('bookDescription').value.trim();
+            const price = parseFloat(document.getElementById('bookPrice').value) || 0;
+            const isPremium = document.getElementById('bookIsPremium').value === 'true';
+            const isPublished = document.getElementById('bookIsPublished').checked;
+            const coverImage = document.getElementById('bookCoverImage').value.trim();
+            const fileUrl = document.getElementById('bookFileUrl').value.trim();
+
+            if (!title) { toast('Please enter a title', 'error'); return; }
+            if (!author) { toast('Please enter an author', 'error'); return; }
+            if (!fileUrl) { toast('Please upload a PDF file', 'error'); return; }
+
+            const payload = { title, author, description, price, isPremium, isPublished, coverImage, fileUrl,
+                approvalStatus: 'approved' };
+            const editId = document.getElementById('editingBookId').value;
+
+            showLoading('Saving book...');
+            try {
+                let res;
+                if (editId) { res = await apiCall(`/admin/books/${editId}`, { method: 'PUT', body: payload });
+                    toast('✅ Book updated!', 'success'); } else { res = await apiCall('/admin/books', { method: 'POST',
+                        body: payload });
+                    toast('✅ Book added!', 'success'); }
+                closeBookForm();
+                loadAdminBooks();
+                loadBooks();
+            } catch (err) { toast('Failed to save book: ' + err.message, 'error'); } finally { hideLoading(); }
+        }
+
+        // ================================================================
         // INITIALIZATION
         // ================================================================
         window.addEventListener('load', async () => {
@@ -12169,7 +11956,7 @@
                 <div class="post-card card card-p">
                     <div class="post-header">
                         <div class="post-author-avatar" style="background:linear-gradient(135deg,var(--primary),var(--secondary));" onclick="openUserProfile('${author._id}')">${avatarHtml}</div>
-                        <div class="post-author-info"><strong onclick="openUserProfile('${author._id}')" style="cursor:pointer">${escapeHtml(author.firstName || 'User')} ${escapeHtml(author.lastName || '')}</strong><span class="post-date">${new Date(post.publishedAt || post.createdAt).toLocaleDateString()}</span><span class="badge badge-cyan" style="font-size:.55rem">${post.type || 'article'}</span>${post.isPremiumOnly ? '<span class="badge badge-gold" style="font-size:.55rem">Premium</span>' : ''}</div>
+                        <div class="post-author-info"><strong onclick="openUserProfile('${author._id}')" style="cursor:pointer">${escapeHtml(author.firstName || 'User')} ${escapeHtml(author.lastName || '')}</strong><span class="post-date">${new Date(post.publishedAt || post.createdAt).toLocaleDateString()}</span><span class="badge badge-cyan" style="font-size:.55rem">${post.type || 'article'}</span>${post.isPremiumOnly ? '<span class="badge badge-gold" style="font-size:.55rem">Premium</span>' : ''}${author.online ? '<span class="online-dot" title="Online"></span>' : ''}</div>
                     </div>
                     <h1 class="post-title" style="font-size:1.5rem;">${escapeHtml(post.title)}</h1>
                     ${post.featuredImage ? `<img src="${post.featuredImage}" class="post-image" alt="featured" loading="lazy">` : ''}
@@ -12484,16 +12271,24 @@
             images.forEach(img => imageObserver.observe(img));
         }
 
-        // ================================================================
-        // CONSOLE LOG – Platform Ready
-        // ================================================================
-        console.log('🚀 ChangeX Academy — Production Ready with Premium Books + Admin Approval + Online/Offline Notifications');
-        console.log('📚 Premium Books: isPremium flag, approvalStatus, admin approve/reject flows.');
-        console.log('👑 Premium-only content: locked books show upgrade prompt.');
-        console.log('🔔 Online/Offline: socket emits missed notifications on reconnect, people list shows online status.');
-        console.log('📊 Full admin panel: pending books tab, book approval, rejection with reason.');
-        console.log('🎯 All existing features preserved and enhanced.');
-        console.log('✅ Production-ready: optimized for growth, engagement, and profitability.');
+        console.log('🚀 ChangeX Academy — Production Ready with Premium Books + Admin Approval + Online/Offline Status');
+        console.log('📚 Premium Books: Authors earn 80% per sale, admin approval workflow, premium gating.');
+        console.log('👑 Premium-only books are locked for free users with upgrade prompt.');
+        console.log('📊 Book earnings show in wallet breakdown and on book cards for authors.');
+        console.log('🔔 Online/Offline status: Green dot on posts, profiles, and people list.');
+        console.log('📢 Hybrid Ads: Custom Admin Ads + Adsterra fallback with 50% creator revenue share.');
+        console.log('📢 Ads appear between posts (every 3 for free, 6 for premium) AND after every 4 courses in Explore.');
+        console.log('📢 Ad rotation: different ads are shown each time (custom ads + Adsterra fallback).');
+        console.log('🗑️ Admin can delete any post.');
+        console.log('📤 Book upload: Premium users can upload books for admin approval.');
+        console.log('🏦 Bank details updated: Lead Bank & Taj Bank for manual transfers.');
+        console.log('⚡ Performance: Lazy loading, debounce, throttle, batch DOM updates, request deduplication.');
+        console.log('🔥 Landing page hero stats hardcoded for marketing impact.');
+        console.log('📊 Leaderboard shows correct user data (no more zeros).');
+        console.log('👤 Profile earnings hidden when viewing other users\' profiles.');
+        console.log('📢 Ad Frequency: Free users see ads every 3 posts, Premium users every 6 posts.');
+        console.log('📚 Book purchase approval automatically converts purchase button to download.');
+        console.log('✅ Production-ready: All features optimized for growth, engagement, and profitability.');
     </script>
 </body>
 </html>
